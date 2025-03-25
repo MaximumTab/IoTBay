@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String[][] users = {{"MaximumTab", "123"}, {"user2", "pass2"}, {"admin", "admin123"}};
+    String[][] users = {{"MaximumTab", "123"}, {"user2", "pass2"}, {"admin", "admin123"}, {"test", "1234"}};
 
     String username = request.getParameter("username");
     String password = request.getParameter("password");
