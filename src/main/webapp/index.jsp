@@ -10,7 +10,7 @@
 <div class="login-container">
     <p>Welcome to IoTBay</p>
     <button onclick="window.location.href='LoginPage.jsp'">Log in</button>
-    <button oneclick="window.location.href='RegisterPage.jsp">Register</button>
+    <button onclick="window.location.href='RegisterPage.jsp'">Register</button>
 </div>
 
 
