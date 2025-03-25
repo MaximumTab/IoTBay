@@ -45,3 +45,12 @@ button:hover {
     color: red;
     margin-top: 10px;
 }
+
+.welcome-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
