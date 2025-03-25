@@ -1,41 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="true" %>
+<jsp:useBean id="customer" class="com.iotbay.model.Customer" scope="session"/>
 <%
-    String[][] users = {{"MaximumTab", "123"}, {"user2", "pass2"}, {"admin", "admin123"}, {"test", "1234"}};
-
-    String username = request.getParameter("username");
+    String email = request.getParameter("email");
     String password = request.getParameter("password");
     String errorMessage = "";
 
-    if (username != null && password != null) {
-        boolean validUser = false;
+    if (email != null && password != null)
+    {
+        customer.setEmail(email);
+        customer.setPassword(password);
 
-        // Check credentials
-        for (String[] user : users) {
-            if (user[0].equals(username) && user[1].equals(password)) {
-                validUser = true;
-                break;
-            }
-        }
-
-        if (validUser) {
+        if (customer.isValidUser())
+        {
+            session.setAttribute("customer", customer);
             response.sendRedirect("WelcomePage.jsp");
             return;
-        } else {
-            errorMessage = "Username or password don't match!";
+        }
+        else
+        {
+            errorMessage = "Email or password don't match!";
         }
     }
 %>
 <html>
 <head>
     <link rel="stylesheet" href="StyleSheet.css">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body class="login-body">
 <div class="login-container">
     <h2>Login</h2>
     <form action="LoginPage.jsp" method="POST">
-
-        <input type="text" id="username" name="username" placeholder="Enter username" required>
+        <input type="text" id="email" name="email" placeholder="Enter email" required>
         <input type="password" id="password" name="password" placeholder="Enter password" required>
 
         <% if (!errorMessage.isEmpty()) { %>

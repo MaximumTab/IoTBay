@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  Customer: maksy
+  com.iotbay.model.Customer: maksy
   Date: 18/03/2025
   Time: 7:26 pm
   To change this template use File | Settings | File Templates.

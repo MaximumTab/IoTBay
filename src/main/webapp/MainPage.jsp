@@ -141,48 +141,48 @@
     <div class="products">
 
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="Product image">
-            <div class="product-name">Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
+            <div class="product-name">com.iotbay.model.Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
     </div>
