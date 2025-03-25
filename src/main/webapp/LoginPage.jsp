@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="StyleSheet.css">
     <title>Title</title>
 </head>
-<body>
+<body class="login-body">
 <div class="login-container">
     <h2>Login</h2>
     <form action="LoginPage.jsp" method="POST">
