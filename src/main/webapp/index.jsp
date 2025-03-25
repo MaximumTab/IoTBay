@@ -1,8 +1,18 @@
-Landing page
 
 <html>
+
+<head>
+    <link rel="stylesheet" href="StyleSheet.css">
+
+</head>
+
 <body>
-<h2>Hello World!</h2>
-<button onclick="window.location.href='LoginPage.jsp'">Log iiiin</button>
+<div class="login-container">
+    <p>Welcome to IoTBay</p>
+    <button onclick="window.location.href='LoginPage.jsp'">Log in</button>
+    <button oneclick="window.location.href='RegisterPage.jsp">Register</button>
+</div>
+
+
 </body>
 </html>
