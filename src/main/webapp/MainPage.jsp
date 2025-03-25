@@ -23,8 +23,8 @@
             padding: 10px 20px;
         }
         .logo {
-            display: grid;
-            width: 10px;
+            display: block;
+            width: 100px;
             height: auto;
             margin-left: 20px;
 
