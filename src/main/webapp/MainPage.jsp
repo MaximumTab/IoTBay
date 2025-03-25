@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,8 +23,11 @@
             padding: 10px 20px;
         }
         .logo {
-            font-size: 1.5em;
-            font-weight: bold;
+            display: grid;
+            width: 10px;
+            height: auto;
+            margin-left: 20px;
+
         }
         nav a {
             margin: 0 10px;
@@ -103,20 +107,21 @@
 <!-- Header -->
 
 <header>
-    <div class="logo">IoTBay</div>
+    <div class="logo">
+        <img src="images/iotbay.png" alt="logo"></div>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Account</a>
-        <a href="#">My Cart</a>
+        <a href="wip.jsp">Account</a>
+        <a href="LoginPage.jsp">Log Out</a>
+        <a href="wip.jsp">My Cart</a>
     </nav>
 </header>
 
 <!-- Categories Navbar -->
 <div class="category-bar">
-    <a href="#">Category 1</a>
-    <a href="#">Category 2</a>
-    <a href="#">Category 3</a>
-    <a href="#">Category 4</a>
+    <a href="wip.jsp">Category 1</a>
+    <a href="wip.jsp">Category 2</a>
+    <a href="wip.jsp">Category 3</a>
+    <a href="wip.jsp">Category 4</a>
 </div>
 
 <!-- Main Content -->
@@ -136,47 +141,47 @@
     <div class="products">
 
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
         <div class="product">
-            <img src="product-image.png" alt="Product image">
+            <img src="images/product-image.webp" alt="Product image">
             <div class="product-name">Product Name</div>
             <div class="product-price">$XXX</div>
         </div>
