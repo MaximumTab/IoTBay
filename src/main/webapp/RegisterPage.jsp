@@ -1,34 +1,35 @@
 <%--
   Created by IntelliJ IDEA.
-  Customer: maksy
+  com.iotbay.model.Customer: maksy
   Date: 18/03/2025
   Time: 7:26 pm
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="true" %>
+<jsp:useBean id="customer" class="com.iotbay.model.Customer" scope="session"/>
 <%
-    String email = request.getParameter("email");
-    String fullname = request.getParameter("fullname");
-    String password = request.getParameter("password");
-    String gender = request.getParameter("gender");
-    String favouriteColour = request.getParameter("favouriteColour");
-    String agreeTOS = request.getParameter("agreeTOS");
+    String[][] users = {
+            {"MaximumTab", "123"},
+            {"user2", "pass2"},
+            {"admin", "admin123"},
+            {"test", "1234"}
+    };
 
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
     String errorMessage = "";
 
-    if (email != null && fullname != null && password != null && gender != null) {
-        if (agreeTOS == null) {
-            errorMessage = "You must agree to the Terms and Conditions!";
-        } else {
-            // Store values directly in the session
-            session.setAttribute("email", email);
-            session.setAttribute("fullname", fullname);
-            session.setAttribute("password", password);
-            session.setAttribute("gender", gender);
-            session.setAttribute("favouriteColour", favouriteColour);
+    if (username != null && password != null) {
+        customer.setUsername(username);
+        customer.setPassword(password);
 
+        if (customer.isValidUser(users)) {
+            session.setAttribute("customer", customer);
             response.sendRedirect("WelcomePage.jsp");
             return;
+        } else {
+            errorMessage = "Username or password don't match!";
         }
     }
 %>
