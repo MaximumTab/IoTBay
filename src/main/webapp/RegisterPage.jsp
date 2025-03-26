@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="StyleSheet.css">
     <title>Register</title>
 </head>
-<body>
+<body class="login-body">
 <div class="login-container">
     <h2>Register</h2>
     <form action="RegisterPage.jsp" method="POST">
