@@ -78,7 +78,7 @@
         .subcategories {
             list-style-type: none;
             margin-left: 20px;
-            background-color: ;
+            background-color: FFFFFF;
         }
         .subcategories li {
             margin-bottom: 30px;
