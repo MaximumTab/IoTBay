@@ -94,6 +94,7 @@ public class Customer implements Serializable
     public boolean isValidUser() {
         Customer validUser = findValidUser(this.email, this.password);
         if (validUser != null) {
+            // Copy data to current object (session bean)
             this.id = validUser.id;
             this.fname = validUser.fname;
             this.lname = validUser.lname;
@@ -105,6 +106,16 @@ public class Customer implements Serializable
             return true;
         }
         return false;
+    }
+
+    public static Customer findValidUser(String email, String password) {
+        for (Customer user : users) {
+            if (user.getEmail().equalsIgnoreCase(email) &&
+                    user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return null;
     }
 
 

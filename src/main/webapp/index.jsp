@@ -1,5 +1,8 @@
 <%@ page import="com.iotbay.model.Customer" %>
 <%@ page session="true" %>
+<%
+    Customer loggedIn = (Customer) session.getAttribute("loggedInCustomer");
+%>
 
 <!DOCTYPE html>
 <html>
