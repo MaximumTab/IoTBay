@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
+<%@ page import="com.iotbay.model.Customer"%>
 <jsp:useBean id="customer" class="com.iotbay.model.Customer" scope="session"/>
 <%
     String email = request.getParameter("email");
