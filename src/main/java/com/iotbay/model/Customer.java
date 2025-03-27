@@ -74,51 +74,34 @@ public class Customer implements Serializable
         return users;
     }
 
+    //retrive the number of users
+    public static int getNumUsers()
+    {
+        return users.size();
+    }
+
     // Add a user to the list
     public static void addUser(Customer user)
     {
         users.add(user);
     }
 
-    //checking the users list for existing user based on the email
-    public static boolean userExists(String email) {
-        for (Customer user : users) {
-            if (user.getEmail().equalsIgnoreCase(email)) {
-                return true;
+    public static void removeUser(Customer user)
+    {
+        users.remove(user);
+    }
+
+    // Checking if the user's email and password match any in the list of users
+    public boolean authenticateUser(String email, String password)
+    {
+        for (Customer user : users)
+        {
+            if (user.getEmail().equals(email))
+            {
+                return user.getPassword().equals(password);
             }
         }
         return false;
     }
-
-    //checking if the users email and password match with any int the list of users
-    public boolean isValidUser() {
-        Customer validUser = findValidUser(this.email, this.password);
-        if (validUser != null) {
-            // Copy data to current object (session bean)
-            this.id = validUser.id;
-            this.fname = validUser.fname;
-            this.lname = validUser.lname;
-            this.address = validUser.address;
-            this.postalCode = validUser.postalCode;
-            this.phone = validUser.phone;
-            this.bsb = validUser.bsb;
-            this.accNum = validUser.accNum;
-            return true;
-        }
-        return false;
-    }
-
-    public static Customer findValidUser(String email, String password) {
-        for (Customer user : users) {
-            if (user.getEmail().equalsIgnoreCase(email) &&
-                    user.getPassword().equals(password)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-
-
 
 }

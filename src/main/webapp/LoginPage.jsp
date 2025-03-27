@@ -7,15 +7,19 @@
     String password = request.getParameter("password");
     String errorMessage = "";
 
+    //testingCustomer
+    Customer testCustomer1 = new Customer(1, "Maxim", "Tabachuk", "ABC Street", 1231, 11111, 111, 111, "maximumtab@outlook.com", "123");
+    Customer.addUser(testCustomer1);
+
     if (email != null && password != null)
     {
         customer.setEmail(email);
         customer.setPassword(password);
 
-        if (customer.isValidUser())
+        if (customer.authenticateUser(email,password))
         {
             session.setAttribute("customer", customer);
-            response.sendRedirect("WelcomePage.jsp");
+            response.sendRedirect("MainPage.jsp");
             return;
         }
         else
@@ -41,6 +45,7 @@
         <% } %>
 
         <button type="submit">Confirm</button>
+        <button type="button" onclick="history.back();">Return</button>
     </form>
 </div>
 </body>
