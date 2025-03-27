@@ -19,7 +19,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #9fc0e8;
+            background-color: #e3e3e3;
             padding: 10px 20px;
         }
         .logo {
@@ -51,7 +51,7 @@
         .category-bar {
             display: flex;
             justify-content: space-around;
-            background-color: #e3e3e3;
+            background-color: #9fc0e8;
             padding: 10px 0;
 
 
@@ -81,7 +81,7 @@
             background-color: ;
         }
         .subcategories li {
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             cursor: pointer;
             font-weight: bold;
         }
