@@ -1,3 +1,4 @@
+<%@ page import="com.iotbay.model.Customer" %>
 <%--
   Created by IntelliJ IDEA.
   com.iotbay.model.Customer: maksy
@@ -7,6 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
+<jsp:useBean id="customer" class="com.iotbay.model.Customer" scope="session"/>
 <html>
 <head>
     <link rel="stylesheet" href="StyleSheet.css">
@@ -100,10 +102,19 @@
 <%
     session = request.getSession();
     String fullname = (String) session.getAttribute("fullname");
-    boolean validUser = true;
-    if (validUser = true) {
+    String fname =(String) session.getAttribute("fname");
+    String lname =(String) session.getAttribute("lname");
+    String address =(String) session.getAttribute("address");
+    String phone =(String) session.getAttribute("phone");
+    String email =(String) session.getAttribute("email");
+    String username =(String) session.getAttribute("username");
+    String password =(String) session.getAttribute("password");
+
+    if(username != null) {
+        Customer customer = new Customer(1,fname,lname, address, phone, email, username, password);
+        session.setAttribute("customer", customer);
 %>
-<p>Welcome, <strong><%= (String) session.getAttribute("fullname") %></strong>! You are logged in.</p>
+<p>Welcome, <strong><%= (String) session.getAttribute("username") %></strong>! You are logged in.</p>
     <a href="MainPage.jsp"><button>Go to Main Page</button></a>
 <%
 } else {
