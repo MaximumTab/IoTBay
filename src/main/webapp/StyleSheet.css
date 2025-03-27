@@ -128,13 +128,13 @@ input[type="text"], input[type="password"], button {
 }
 
 button {
-    background-color: blue;
+    background-color: #405acd;
     color: white;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #b9b9b9;
 }
 
 .error-message {
