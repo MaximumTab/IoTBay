@@ -81,9 +81,9 @@ public class Customer implements Serializable
     }
 
     //checking the users list for existing user based on the email
-    public boolean userExists(String email) {
+    public static boolean userExists(String email) {
         for (Customer user : users) {
-            if (user.getEmail().equals(email)) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
                 return true;
             }
         }
@@ -92,11 +92,22 @@ public class Customer implements Serializable
 
     //checking if the users email and password match with any int the list of users
     public boolean isValidUser() {
-        for (Customer user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                return true;
-            }
+        Customer validUser = findValidUser(this.email, this.password);
+        if (validUser != null) {
+            this.id = validUser.id;
+            this.fname = validUser.fname;
+            this.lname = validUser.lname;
+            this.address = validUser.address;
+            this.postalCode = validUser.postalCode;
+            this.phone = validUser.phone;
+            this.bsb = validUser.bsb;
+            this.accNum = validUser.accNum;
+            return true;
         }
         return false;
     }
+
+
+
+
 }
