@@ -8,7 +8,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
-<jsp:useBean id="customer" class="com.iotbay.model.Customer" scope="session"/>
 <html>
 <head>
     <link rel="stylesheet" href="StyleSheet.css">
