@@ -130,7 +130,7 @@
         <img src="images/iotbay.png" alt="logo"></div>
     <nav>
         <a href="wip.jsp">Account</a>
-        <a href="LoginPage.jsp">Log Out</a>
+        <a href="LogoutPage.jsp">Log Out</a>
         <a href="wip.jsp">My Cart</a>
     </nav>
 </header>

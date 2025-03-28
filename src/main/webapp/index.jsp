@@ -25,9 +25,14 @@
 
 <div class="landingbody">
     <div class="landing-text">
+
         <b>Shop</b>
         <b>Anywhere</b>
         <b>Anytime</b>
+        <p style="padding-top: 20px; font-size: 14px;">
+            There are currently <%= Customer.getNumUsers() %> registered users!
+        </p>
+
     </div>
     <div class="landing-image">
         <img src="images/shopping.png" alt="Shopping" />
