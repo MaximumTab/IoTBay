@@ -19,7 +19,7 @@
         if (customer.authenticateUser(email,password))
         {
             session.setAttribute("customer", customer);
-            response.sendRedirect("MainPage.jsp");
+            response.sendRedirect("WelcomePage.jsp");
             return;
         }
         else
