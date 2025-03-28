@@ -19,7 +19,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #f2f2f2;
+            background-color: #e3e3e3;
             padding: 10px 20px;
         }
         .logo {
@@ -27,12 +27,21 @@
             width: 100px;
             height: auto;
             margin-left: 20px;
-
         }
+
+        .logo img {
+            width: 200px;
+            height: auto;
+        }
+
+
         nav a {
             margin: 0 10px;
             text-decoration: none;
             color: #333;
+            font-weight: bold;
+        }
+
         }
         nav a:hover {
             text-decoration: underline;
@@ -42,11 +51,15 @@
         .category-bar {
             display: flex;
             justify-content: space-around;
-            background-color: #ddd;
+            background-color: #9fc0e8;
             padding: 10px 0;
+
+
         }
         .category-bar a {
             text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
             color: #333;
         }
         .category-bar a:hover {
@@ -57,16 +70,20 @@
         .main-container {
             display: grid;
             grid-template-columns: 200px 1fr;
-            gap: 20px;
-            padding: 20px;
+            margin-top: 50px
+        ;
+
         }
 
         .subcategories {
             list-style-type: none;
+            margin-left: 20px;
+            background-color: FFFFFF;
         }
         .subcategories li {
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             cursor: pointer;
+            font-weight: bold;
         }
         .subcategories li:hover {
             text-decoration: underline;
@@ -74,8 +91,10 @@
 
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            background-color: FFFFFF;
+            margin-right: 20px;
         }
         .product {
             border: 1px solid #ccc;
@@ -143,47 +162,47 @@
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$X999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
             <div class="product-name">com.iotbay.model.Product Name</div>
-            <div class="product-price">$XXX</div>
+            <div class="product-price">$999.99</div>
         </div>
     </div>
 </div>

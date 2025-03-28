@@ -4,14 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer implements Serializable {
+public class Customer implements Serializable
+{
     private int id;
     private String fname;
     private String lname;
     private String address;
-    private String phone;
+    private int postalCode;
+    private int phone;
+    private int bsb;
+    private int accNum;
     private String email;
-    private String username;
     private String password;
 
     // Static list to hold users for the session
@@ -22,15 +25,17 @@ public class Customer implements Serializable {
 
     }
 
-    public Customer(int id, String fname, String lname, String address, String phone, String email, String username, String password)
+    public Customer(int id, String fname, String lname, String address, int postalCode, int phone, int bsb, int accNum, String email, String password)
     {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.address = address;
+        this.postalCode = postalCode;
         this.phone = phone;
+        this.bsb = bsb;
+        this.accNum = accNum;
         this.email = email;
-        this.username = username;
         this.password = password;
     }
 
@@ -47,14 +52,20 @@ public class Customer implements Serializable {
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public int getPostalCode() { return postalCode; }
+    public void setPostalCode(int postalCode) { this.postalCode = postalCode; }
+
+    public int getPhone() { return phone; }
+    public void setPhone(int phone) { this.phone = phone; }
+
+    public int getBsb() { return bsb; }
+    public void setBsb(int bsb) { this.bsb = bsb; }
+
+    public int getAccNum() { return accNum; }
+    public void setAccNum(int accNum) { this.accNum = accNum; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
-
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
@@ -63,25 +74,34 @@ public class Customer implements Serializable {
         return users;
     }
 
-    public void saveUser() {
-        users.add(this);  // Save the current customer object
+    //retrive the number of users
+    public static int getNumUsers()
+    {
+        return users.size();
     }
 
-    public boolean userExists(String email) {
-        for (Customer user : users) {
-            if (user.getEmail().equals(email)) {
-                return true;
+    // Add a user to the list
+    public static void addUser(Customer user)
+    {
+        users.add(user);
+    }
+
+    public static void removeUser(Customer user)
+    {
+        users.remove(user);
+    }
+
+    // Checking if the user's email and password match any in the list of users
+    public boolean authenticateUser(String email, String password)
+    {
+        for (Customer user : users)
+        {
+            if (user.getEmail().equals(email))
+            {
+                return user.getPassword().equals(password);
             }
         }
         return false;
     }
 
-    public boolean isValidUser() {
-        for (Customer user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
