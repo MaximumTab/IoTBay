@@ -1,4 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+<%@ page import="com.iotbay.model.Customer" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="true" %>
+
 
 <html>
 <head>
@@ -208,8 +212,24 @@
 </div>
 
 <!-- Footer -->
+
 <footer>
-    Footer
+
+    <p style="padding-top: 20px">
+        There are currently <%= Customer.getNumUsers() %> Online users!
+    </p>
+    <br>
+    <p>© 2025 IoTBay - All rights reserved.</p>
+    <br>
+    <nav>
+        <a href="index.jsp">Index</a>
+        <a href="LoginPage.jsp">Login</a>
+        <a href="RegisterPage.jsp">Register</a>
+        <a href="LogoutPage.jsp">Logout</a>
+        <a href="WelcomePage.jsp">Welcome</a>
+        <a href="Terms.jsp">Terms & Conditions</a>
+    </nav>
+
 </footer>
 
 </body>
