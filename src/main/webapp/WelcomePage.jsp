@@ -100,25 +100,45 @@
 
 <%
     session = request.getSession();
-    String fullname = (String) session.getAttribute("fullname");
+    Customer customer = (Customer) session.getAttribute("customer");
+
+    Boolean loggedInUser = true;
+
     String fname =(String) session.getAttribute("fname");
     String lname =(String) session.getAttribute("lname");
     String address =(String) session.getAttribute("address");
     String phone =(String) session.getAttribute("phone");
-    String email =(String) session.getAttribute("email");
-    String username =(String) session.getAttribute("username");
+    String email = request.getParameter("email");
+    //String email =(String) session.getAttribute("email");
+    String username = request.getParameter("username");
+    //String username =(String) session.getAttribute("username");
     String password =(String) session.getAttribute("password");
+    String displayedName = customer.getEmail().split("@")[0];
 
-    if(username != null) {
-        Customer customer = new Customer(1, fname, lname, address, 1, 1, 1, 1, email, password);
+    if(customer.getEmail() == null){ //I added this to check if the user is logged in or not
+        loggedInUser = false;
+    }
+
+    if(loggedInUser) {
         session.setAttribute("customer", customer);
 %>
-<p>Welcome, <strong><%= (String) session.getAttribute("username") %></strong>! You are logged in.</p>
+<p>Welcome, <strong><%= displayedName %></strong>! You are logged in.</p>
     <a href="MainPage.jsp"><button>Go to Main Page</button></a>
+    <p style="padding-top: 50px">There are currently <%=customer.getNumUsers()%> Online users!</p>
 <%
-} else {
+} else { //this part works if its first time registered also if you are reading these, Ilker sends you a cookie :)
+        customer.setId(1);
+        customer.setFname(fname);
+        customer.setLname(lname);
+        customer.setAddress(address);
+        customer.setPostalCode(1);
+        customer.setPhone(1);
+        customer.setBsb(1);
+        customer.setAccNum(1);
 %>
-<p>You are not logged in. Please <a href="LoginPage.jsp">log in</a>.</p>
+    <p>Welcome, New User <strong><%= displayedName %></strong>! You are logged in.</p>
+    <a href="MainPage.jsp"><button>Go to Main Page</button></a>
+    <p style="padding-top: 50px">There are currently <%=customer.getNumUsers()%> Online users!</p>
 <%
     }
 %>
