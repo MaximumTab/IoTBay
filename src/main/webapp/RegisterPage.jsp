@@ -21,10 +21,10 @@
     String errorMessage = "";
 
     if (username != null && password != null) {
-        customer.setUsername(username);
+        customer.setEmail(username);
         customer.setPassword(password);
 
-        if (customer.isValidUser(users)) {
+        if (customer.authenticateUser(username, password)) {
             session.setAttribute("customer", customer);
             response.sendRedirect("WelcomePage.jsp");
             return;
@@ -33,6 +33,7 @@
         }
     }
 %>
+
 <html>
 <head>
     <link rel="stylesheet" href="StyleSheet.css">
