@@ -110,7 +110,7 @@
     String password =(String) session.getAttribute("password");
 
     if(username != null) {
-        Customer customer = new Customer(1,fname,lname, address, phone, email, username, password);
+        Customer customer = new Customer(1, fname, lname, address, 1, 1, 1, 1, email, password);
         session.setAttribute("customer", customer);
 %>
 <p>Welcome, <strong><%= (String) session.getAttribute("username") %></strong>! You are logged in.</p>
