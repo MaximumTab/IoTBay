@@ -9,11 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Logout - IoTBay</title>
-    <!--  -->
-    <!-- <link rel="stylesheet" href="StyleSheet.css"> -->
-
     <style>
-        /* ======== Inline CSS======== */
         body {
             margin: 0;
             padding: 0;
@@ -66,22 +62,123 @@
         .logout-footer a:hover {
             text-decoration: underline;
         }
-        /* ======== Inline Css ======== */
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .modal-content {
+            background-color: #fff;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            cursor: move;
+        }
+        .modal-header {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-body {
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .modal-footer {
+            padding: 10px;
+            text-align: center;
+        }
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .confirm-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .confirm-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+
+<!-- Custom Modal -->
+<div class="modal" id="customModal">
+    <div class="modal-content" id="modalBox">
+        <div class="modal-header" id="modalHeader">
+            Notice from IoTBay
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            You have successfully logged out.
+        </div>
+        <div class="modal-footer">
+            <button class="confirm-btn" onclick="closeModal()">Confirm</button>
+        </div>
+    </div>
+</div>
+
 <div class="logout-container">
     <h1>You have logged out</h1>
     <p>Thank you for visiting IoTBay! We hope to see you again soon.</p>
-    <!-- Click this button to return to the login page -->
     <button class="logout-button" onclick="window.location.href='index.jsp'">
         Go Back
     </button>
-
-    <!-- Give some additional links or instructions at the bottom of the page -->
     <div class="logout-footer">
         <p><a href="LoginPage.jsp">Go to Login</a></p>
     </div>
 </div>
+
+<script>
+    // Close modal and redirect
+    function closeModal() {
+        document.getElementById("customModal").style.display = "none";
+
+    }
+
+    // Drag modal functionality
+    const modal = document.getElementById("modalBox");
+    const header = document.getElementById("modalHeader");
+    let offsetX, offsetY;
+
+    header.onmousedown = function(e) {
+        offsetX = e.clientX - modal.offsetLeft;
+        offsetY = e.clientY - modal.offsetTop;
+        document.onmousemove = function(e) {
+            modal.style.left = (e.clientX - offsetX) + 'px';
+            modal.style.top = (e.clientY - offsetY) + 'px';
+            modal.style.position = 'absolute';
+        };
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
+</script>
 </body>
 </html>
