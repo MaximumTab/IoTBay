@@ -124,7 +124,7 @@
 %>
 <p>Welcome, <strong><%= displayedName %></strong>! You are logged in.</p>
     <a href="MainPage.jsp"><button>Go to Main Page</button></a>
-    <p style="padding-top: 50px">There are currently <%=customer.getNumUsers()%> Online users!</p>
+    <p style="padding-top: 50px">There are currently <%=customer.getNumOnlineUsers()%> Online users!</p>
 <%
 } else { //this part works if its first time registered also if you are reading these, Ilker sends you a cookie :)
         customer.setId(1);
