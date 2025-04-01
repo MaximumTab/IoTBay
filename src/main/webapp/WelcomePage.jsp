@@ -138,7 +138,7 @@
 %>
     <p>Welcome, New User <strong><%= displayedName %></strong>! You are logged in.</p>
     <a href="MainPage.jsp"><button>Go to Main Page</button></a>
-    <p style="padding-top: 50px">There are currently <%=customer.getNumUsers()%> Online users!</p>
+    <p style="padding-top: 50px">There are currently <%=customer.getNumOnlineUsers()%> Online users!</p>
 <%
     }
 %>

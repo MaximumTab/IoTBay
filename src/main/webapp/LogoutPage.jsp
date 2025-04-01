@@ -1,7 +1,14 @@
+<%@ page import="com.iotbay.model.Customer" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%
-    //  Once on the page, the user exits (destroys session)
+    Customer customer = (Customer) session.getAttribute("customer");
+
+    Customer.removeOnlineUser(customer);
+
+    //System.out.println(Customer.getNumOnlineUsers());
+
+
     session.invalidate();
 %>
 <!DOCTYPE html>
@@ -158,7 +165,6 @@
     // Close modal and redirect
     function closeModal() {
         document.getElementById("customModal").style.display = "none";
-
     }
 
     // Drag modal functionality

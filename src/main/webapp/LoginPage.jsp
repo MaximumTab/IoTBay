@@ -7,10 +7,6 @@
     String password = request.getParameter("password");
     String errorMessage = "";
 
-    //testingCustomer
-    Customer testCustomer1 = new Customer(1, "Maxim", "Tabachuk", "ABC Street", 1231, 11111, 111, 111, "maximumtab@outlook.com", "123");
-    Customer.addUser(testCustomer1);
-
     if (email != null && password != null)
     {
         customer.setEmail(email);
@@ -19,7 +15,10 @@
         if (customer.authenticateUser(email,password))
         {
             session.setAttribute("customer", customer);
+            Customer.addOnlineUser(customer);
+            //System.out.println(Customer.getNumOnlineUsers());
             response.sendRedirect("WelcomePage.jsp");
+
             return;
         }
         else
@@ -40,9 +39,7 @@
         <input type="text" id="email" name="email" placeholder="Enter email" required>
         <input type="password" id="password" name="password" placeholder="Enter password" required>
 
-        <% if (!errorMessage.isEmpty()) { %>
         <p class="error-message"><%= errorMessage %></p>
-        <% } %>
 
         <button type="submit">Confirm</button>
         <button type="button" onclick="history.back();">Return</button>

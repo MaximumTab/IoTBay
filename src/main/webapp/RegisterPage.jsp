@@ -31,6 +31,7 @@
                 Customer newCustomer = new Customer(0, fname, lname, address, postalCode, phone, bsb, accNum, email, password);
 
                 Customer.addUser(newCustomer);
+                Customer.addOnlineUser(newCustomer); // add the same customer to the onlineUsers List
                 session.setAttribute("customer", newCustomer);
 
            

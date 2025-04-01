@@ -20,6 +20,9 @@ public class Customer implements Serializable
     // Static list to hold users for the session
     private static List<Customer> users = new ArrayList<>();
 
+    // Static list to hold the currently logged-in users for the session
+    private static List<Customer> onlineUsers = new ArrayList<>();
+
     public Customer()
     {
 
@@ -74,13 +77,9 @@ public class Customer implements Serializable
         return users;
     }
 
-    //retrive the number of users
-    public static int getNumUsers()
-    {
-        return users.size();
-    }
 
-    // Add a user to the list
+
+    // Add and remove user from the list
     public static void addUser(Customer user)
     {
         users.add(user);
@@ -89,6 +88,29 @@ public class Customer implements Serializable
     public static void removeUser(Customer user)
     {
         users.remove(user);
+    }
+
+    //retrieve the number of users
+    public static int getNumUsers()
+    {
+        return users.size();
+    }
+
+    // Add and remove currently logged-in user from the list
+    public static  void addOnlineUser(Customer onlineUser)
+    {
+        onlineUsers.add(onlineUser);
+    }
+
+    public static  void removeOnlineUser(Customer onlineUser)
+    {
+        onlineUsers.remove(onlineUser);
+    }
+
+    //retrieve the number of currently logged-in users
+    public static int getNumOnlineUsers()
+    {
+        return onlineUsers.size();
     }
 
     // Checking if the user's email and password match any in the list of users
