@@ -2,31 +2,31 @@
 <%@ page import="com.iotbay.model.Customer"%>
 <%@ page session="true" %>
 <jsp:useBean id="customer" class="com.iotbay.model.Customer" scope="session"/>
-<%
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
-    String errorMessage = "";
+<%--<%--%>
+<%--    String email = request.getParameter("email");--%>
+<%--    String password = request.getParameter("password");--%>
+<%--    String errorMessage = "";--%>
 
-    if (email != null && password != null)
-    {
-        customer.setEmail(email);
-        customer.setPassword(password);
+<%--    if (email != null && password != null)--%>
+<%--    {--%>
+<%--        customer.setEmail(email);--%>
+<%--        customer.setPassword(password);--%>
 
-        if (customer.authenticateUser(email,password))
-        {
-            session.setAttribute("customer", customer);
-            Customer.addOnlineUser(customer);
-            //System.out.println(Customer.getNumOnlineUsers());
-            response.sendRedirect("WelcomePage.jsp");
+<%--        if (customer.authenticateUser(email,password))--%>
+<%--        {--%>
+<%--            session.setAttribute("customer", customer);--%>
+<%--            Customer.addOnlineUser(customer);--%>
+<%--            //System.out.println(Customer.getNumOnlineUsers());--%>
+<%--            response.sendRedirect("WelcomePage.jsp");--%>
 
-            return;
-        }
-        else
-        {
-            errorMessage = "Email or password don't match!";
-        }
-    }
-%>
+<%--            return;--%>
+<%--        }--%>
+<%--        else--%>
+<%--        {--%>
+<%--            errorMessage = "Email or password don't match!";--%>
+<%--        }--%>
+<%--    }--%>
+<%--%>--%>
 <html>
 <head>
     <link rel="stylesheet" href="StyleSheet.css">
