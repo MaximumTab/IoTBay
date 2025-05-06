@@ -2,79 +2,87 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users (
-    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    full_name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL,
-    phone TEXT,
-    user_type TEXT CHECK(user_type IN ('customer', 'staff')) NOT NULL,
-    is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1))
+                       user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        card_id INTEGER,
+                       full_name TEXT NOT NULL,
+                       email TEXT UNIQUE NOT NULL,
+                       password_hash TEXT NOT NULL,
+                       phone TEXT,
+                       user_type TEXT CHECK(user_type IN ('customer', 'staff')) NOT NULL,
+                       is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1)),
+                         FOREIGN KEY (card_id) REFERENCES CreditCards(card_id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS AccessLogs;
 CREATE TABLE AccessLogs (
-    log_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    login_time TEXT NOT NULL,
-    logout_time TEXT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+                            log_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            user_id INTEGER NOT NULL,
+                            login_time TEXT NOT NULL,
+                            logout_time TEXT,
+                            FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS IoTDevices;
 CREATE TABLE IoTDevices (
-    device_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    device_name TEXT NOT NULL,
-    device_type TEXT,
-    unit_price REAL NOT NULL,
-    quantity INTEGER NOT NULL,
-    created_by INTEGER,
-    FOREIGN KEY (created_by) REFERENCES Users(user_id)
+                            device_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            device_name TEXT NOT NULL,
+                            device_type TEXT,
+                            unit_price REAL NOT NULL,
+                            quantity INTEGER NOT NULL,
+                            created_by INTEGER,
+                            FOREIGN KEY (created_by) REFERENCES Users(user_id)
 );
 
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
-    order_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    customer_id INTEGER NOT NULL,
-    order_date TEXT DEFAULT (datetime('now')),
-    status TEXT DEFAULT 'saved' CHECK(status IN ('saved', 'submitted', 'cancelled')),
-    FOREIGN KEY (customer_id) REFERENCES Users(user_id)
+                        order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        customer_id INTEGER NOT NULL,
+                        order_date TEXT DEFAULT (datetime('now')),
+                        status TEXT DEFAULT 'saved' CHECK(status IN ('saved', 'submitted', 'cancelled')),
+                        FOREIGN KEY (customer_id) REFERENCES Users(user_id)
 );
 DROP TABLE IF EXISTS OrderItems;
 CREATE TABLE OrderItems (
-    item_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    order_id INTEGER NOT NULL,
-    device_id INTEGER NOT NULL,
-    quantity INTEGER NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
-    FOREIGN KEY (device_id) REFERENCES IoTDevices(device_id)
+                            item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            order_id INTEGER NOT NULL,
+                            device_id INTEGER NOT NULL,
+                            quantity INTEGER NOT NULL,
+                            FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+                            FOREIGN KEY (device_id) REFERENCES IoTDevices(device_id)
 );
 
 DROP TABLE IF EXISTS Payments;
 CREATE TABLE Payments (
-    payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    order_id INTEGER NOT NULL,
-    payment_method TEXT,
-    credit_card TEXT,
-    amount REAL NOT NULL,
-    payment_date TEXT DEFAULT (datetime('now')),
-    status TEXT DEFAULT 'saved' CHECK(status IN ('saved', 'finalized')),
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
+                          payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          order_id INTEGER NOT NULL,
+                          payment_method TEXT,
+                          amount REAL NOT NULL,
+                          payment_date TEXT DEFAULT (datetime('now')),
+                          status TEXT DEFAULT 'saved' CHECK(status IN ('saved', 'finalized')),
+                          FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS StaffDetails;
 CREATE TABLE StaffDetails (
-    staff_id INTEGER PRIMARY KEY,
-    position TEXT,
-    address TEXT,
-    FOREIGN KEY (staff_id) REFERENCES Users(user_id)
+                              staff_id INTEGER PRIMARY KEY,
+                              position TEXT,
+                              address TEXT,
+                              FOREIGN KEY (staff_id) REFERENCES Users(user_id)
 );
 
 DROP TABLE IF EXISTS Suppliers;
 CREATE TABLE Suppliers (
-    supplier_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT,
-    type TEXT CHECK(type IN ('company', 'individual')),
-    address TEXT,
-    is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1))
+                           supplier_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                           name TEXT NOT NULL,
+                           email TEXT,
+                           type TEXT CHECK(type IN ('company', 'individual')),
+                           address TEXT,
+                           is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1))
+);
+DROP TABLE IF EXISTS  CreditCards;
+CREATE TABLE CreditCards (
+                          card_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          credit_card_number INTEGER NOT NULL,
+                          ccv INTEGER NOT NULL,
+                          bsb INTEGER NOT NULL
 );
