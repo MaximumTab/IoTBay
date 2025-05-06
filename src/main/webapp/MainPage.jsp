@@ -164,48 +164,48 @@
     <div class="products">
 
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$X999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
         <div class="product">
-            <img src="images/product-image.webp" alt="com.iotbay.model.Product image">
-            <div class="product-name">com.iotbay.model.Product Name</div>
+            <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
+            <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
         </div>
     </div>

@@ -1,37 +1,36 @@
 package com.iotbay.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class Order implements Serializable
 {
     private int orderID;
-    private int orderDate;
-    private String orderStatus;
-    private double orderAmount;
+    User orderCustomer;
+    LocalDateTime orderDate;
+    String orderStatus; //saved || submitted || canceled
+    List<OrderItem> items;
 
-    public Order()
+    public Order(User orderCustomer, int orderID, LocalDateTime orderDate, String orderStatus, List<OrderItem> items)
     {
-
-    }
-
-    public Order (int orderID, int orderDate, String orderStatus, double orderAmount)
-    {
+        this.orderCustomer = orderCustomer;
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
-        this.orderAmount = orderAmount;
+        this.items = items;
     }
 
-    //getter and setter methods
     public int getOrderID() {return orderID;}
-    public void setOrderID(int orderID) {this.orderID = orderID;}
-
-    public int getOrderDate() {return orderDate;}
-    public void setOrderDate(int orderDate) {this.orderDate = orderDate;}
-
+    public User getOrderCustomer() {return orderCustomer;}
+    public LocalDateTime getOrderDate() {return orderDate;}
     public String getOrderStatus() {return orderStatus;}
-    public void setOrderStatus(String orderStatus) {this.orderStatus = orderStatus;}
+    public List<OrderItem> getItems() {return items;}
 
-    public double getOrderAmount() {return orderAmount;}
-    public void setOrderAmount(double orderAmount) {this.orderAmount = orderAmount;}
+    public void setOrderID(User orderCustomer) {this.orderID = orderID;}
+    public void setOrderCustomer(User orderCustomer) {this.orderCustomer = orderCustomer;}
+    public void setOrderDate(LocalDateTime orderDate) {this.orderDate = orderDate;}
+    public void setOrderStatus(String orderStatus) {this.orderStatus = orderStatus;}
+    public void setItems(List<OrderItem> items) {this.items = items;}
+
 }

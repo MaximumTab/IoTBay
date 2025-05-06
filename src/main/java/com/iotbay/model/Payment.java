@@ -1,47 +1,42 @@
 package com.iotbay.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class Payment implements Serializable
 {
-    private int paymentId;
-    private String paymentName;
-    private int paymentDate;
-    private int recipientBsb;
-    private int recipientAccNum;
-    private double paymentAmount;
+    int paymentId;
+    Order order;
+    String paymentMethod;
+    String creditCard;
+    Double amount;
+    LocalDateTime paymentDate;
+    String paymentStatus; //saved || finalized
 
-    public Payment()
-    {
-
-    }
-
-    public Payment(int paymentId, String paymentName, int paymentDate, int recipientBsb, int recipientAccNum, double paymentAmount)
+    public Payment(int paymentId, Order order, String paymentMethod, String creditCard, Double amount, LocalDateTime paymetnDate)
     {
         this.paymentId = paymentId;
-        this.paymentName = paymentName;
-        this.paymentDate = paymentDate;
-        this.recipientBsb = recipientBsb;
-        this.recipientAccNum = recipientAccNum;
-        this.paymentAmount = paymentAmount;
+        this.order = order;
+        this.paymentMethod = paymentMethod;
+        this.creditCard = creditCard;
+        this.amount = amount;
+        this.paymentDate = paymetnDate;
     }
 
-    //Getter and setter methods
     public int getPaymentId() {return paymentId;}
+    public Order getOrder() {return order;}
+    public String getPaymentMethod() {return paymentMethod;}
+    public String getCreditCard() {return creditCard;}
+    public Double getAmount() {return amount;}
+    public LocalDateTime getPaymentDate() {return paymentDate;}
+    public String getPaymentStatus() {return paymentStatus;}
+
+    public void setPaymentStatus(String paymentStatus) {this.paymentStatus = paymentStatus;}
     public void setPaymentId(int paymentId) {this.paymentId = paymentId;}
+    public void setOrder(Order order) {this.order = order;}
+    public void setPaymentMethod(String paymentMethod) {this.paymentMethod = paymentMethod;}
+    public void setCreditCard(String creditCard) {this.creditCard = creditCard;}
+    public void setAmount(Double amount) {this.amount = amount;}
+    public void setPaymentDate(LocalDateTime paymentDate) {this.paymentDate = paymentDate;}
 
-    public String getPaymentName() {return paymentName;}
-    public void setPaymentName(String paymentName) {this.paymentName = paymentName;}
-
-    public int getPaymentDate() {return paymentDate;}
-    public void setPaymentDate(int paymentDate) {this.paymentDate = paymentDate;}
-
-    public int getRecipientBsb() {return recipientBsb;}
-    public void setRecipientBsb(int recipientBsb) {this.recipientBsb = recipientBsb;}
-
-    public int getRecipientAccNum() {return recipientAccNum;}
-    public void setRecipientAccNum(int recipientAccNum) {this.recipientAccNum = recipientAccNum;}
-
-    public double getPaymentAmount() {return paymentAmount;}
-    public void setPaymentAmount(double paymentAmount) {this.paymentAmount = paymentAmount;}
 }
