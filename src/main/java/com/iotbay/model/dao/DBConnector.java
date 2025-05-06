@@ -16,6 +16,7 @@ public class DBConnector {
             throw new RuntimeException(e);
         }
         String url = "jdbc:sqlite:IotBay.db";
+
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);

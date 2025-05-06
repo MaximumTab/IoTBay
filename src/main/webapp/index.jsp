@@ -1,7 +1,9 @@
-<%@ page import="com.iotbay.model.Customer" %>
+<%@ page import="com.iotbay.model.User" %>
+<%@ page import="com.iotbay.model.dao.DAO" %>
 <%@ page session="true" %>
+
 <%
-    Customer loggedIn = (Customer) session.getAttribute("loggedInCustomer");
+    DAO db = (DAO)session.getAttribute("db");
 %>
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@
     <div class="nav-right">
         <button onclick="location.href='LoginPage.jsp'">Log in</button>
         <button onclick="location.href='RegisterPage.jsp'">Register</button>
+        <button onclick="location.href='DevicesListView.jsp'">View Devices</button>
     </div>
 </div>
 
@@ -30,7 +33,6 @@
         <b>Anywhere</b>
         <b>Anytime</b>
         <p style="padding-top: 20px; font-size: 14px;">
-            There are currently <%= Customer.getNumUsers() %> registered users!
         </p>
 
     </div>
@@ -39,11 +41,6 @@
     </div>
 
     <div class="current">
-        <% if (loggedIn != null) { %>
-        <p>Currently logged-in user: <strong><%= loggedIn.getFname() %></strong></p>
-        <% } else { %>
-        <p></p>
-        <% } %>
     </div>
 </div>
 </body>

@@ -1,6 +1,7 @@
 package com.iotbay.model;
 
 import java.io.Serializable;
+import java.sql.Ref;
 
 public class Devices implements Serializable
 {
@@ -26,7 +27,7 @@ public class Devices implements Serializable
     public String getDeviceType() { return deviceType; }
     public double getDevicePrice() { return devicePrice; }
     public int getDeviceQuantity() { return deviceQuantity; }
-    public User getDeviceCreator() { return deviceCreator; }
+    public Ref getDeviceCreator() { return (Ref) deviceCreator; }
 
     public void setDeviceId(int deviceId) { this.deviceId = deviceId; }
     public void setDeviceName(String deviceName) { this.deviceName = deviceName; }
