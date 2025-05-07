@@ -133,3 +133,8 @@ INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_
 INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Gas Leak Detector',    'sensor',   295.90, 43,  6);
 INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Vibration Sensor',     'sensor',   296.36, 60, 20);
 INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Beacon Tag',           'sensor',   224.63, 60,  1);
+
+INSERT INTO StaffDetails (staff_id, position, address) VALUES
+(1, 'Sales Manager', '123 Main St'),
+(2, 'Technician', '456 Oak Rd'),
+(3, 'pick and pack', '569 him Rd');
