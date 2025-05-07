@@ -78,3 +78,30 @@ CREATE TABLE Suppliers (
     address TEXT,
     is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1))
 );
+
+INSERT INTO Users (full_name, email, password_hash, phone, user_type) VALUES
+('Lebron James', 'king@example.com', 'hash1', '000-1111', 'customer'),
+('Stephen Curry', 'curry@example.com', 'hash2', '000-2222', 'customer'),
+('Kobe Bryant', 'kobe@example.com', 'hash3', '000-3333', 'customer'),
+('Anthony Edward', 'ant@example.com', 'hash4', '000-4444', 'staff'),
+('Austin Reeves', 'coldestwhiteboi@example.com', 'hash5', '000-5555', 'staff');
+('Jimmy Butler', 'playoff@example.com', 'hash6', '000-666', 'customer'),
+('Draymond Green', 'bear@example.com', 'hash7', '000-9999', 'customer'),
+('Lamelo Ball', 'ye@example.com', 'hash8', '000-1122', 'customer'),
+('Naz Reid', 'bet@example.com', 'hash9', '000-2233', 'staff'),
+('Jaylin William', 'stylist@example.com', 'hash10', '000-3344', 'staff');
+('Jalen Brunson', 'goat@example.com', 'hash11', '000-4455', 'customer'),
+('Josh Hart', 'heart@example.com', 'hash12', '000-5566', 'customer'),
+('Payton Pitchard', 'shooter@example.com', 'hash13', '000-6677', 'customer'),
+('Luka Doncic', 'dallas@example.com', 'hash14', '000-7788', 'staff'),
+('Kyrie Irving', 'shifty@example.com', 'hash15', '000-8899', 'staff');
+
+INSERT INTO StaffDetails (staff_id, position, address) VALUES
+(1, 'Sales Manager', '123 Main St'),
+(2, 'Technician', '456 Oak Rd'),
+(3, 'pick and Pack', '569 goat St');
+
+
+
+
+

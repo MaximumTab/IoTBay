@@ -29,7 +29,7 @@
         <b>Shop</b>
         <b>Anywhere</b>
         <b>Anytime</b>
-        <p style="padding-top: 20px; font-size: 14px;">
+        <p style="padding-top: 20px; font-size: 14px;e56">
             There are currently <%= Customer.getNumUsers() %> registered users!
         </p>
 
