@@ -21,6 +21,7 @@ public class DevicesDBManager extends DBManager<Devices>
         ps.setDouble(3, device.getDevicePrice());
         ps.setInt(4, device.getDeviceQuantity());
         ps.setRef(5, device.getDeviceCreator());
+        ps.executeUpdate();
 
         ps = connection.prepareStatement("SELECT MAX(device_id) FROM IoTDevices");
         ResultSet rs = ps.executeQuery();
@@ -64,6 +65,7 @@ public class DevicesDBManager extends DBManager<Devices>
         LinkedList<Devices> devices = new LinkedList<>();
         String sql = "SELECT * FROM IoTDevices";
         PreparedStatement ps = connection.prepareStatement(sql);
+        ps.executeQuery();
         ResultSet rs = ps.executeQuery();
 
         while (rs.next())

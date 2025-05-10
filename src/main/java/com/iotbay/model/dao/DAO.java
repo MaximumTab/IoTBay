@@ -16,21 +16,28 @@ public class DAO {
         tables = new ArrayList<>();
         Connection connection = new DBConnector().getConnection();
         try {
-            //tables.add(new AccessLogDBManager(connection));
             tables.add(new DevicesDBManager(connection));
+            tables.add(new UserDBManager(connection));
+            //tables.add(new AccessLogDBManager(connection));
             //tables.add(new OrderDBManager(connection));
             //tables.add(new OrderItemDBManager(connection));
             //tables.add(new PaymentDBManager(connection));
             //tables.add(new StaffDetail(connection));
             //tables.add(new SupplierDBManager(connection));
-            //tables.add(new UserDBManager(connection));
+
         } catch (SQLException ex) {
             System.out.println("Error initializing DBManagers");
         }
     }
 
-    public DevicesDBManager Devices() {
+    public DevicesDBManager Devices()
+    {
         return (DevicesDBManager) tables.get(0);
+    }
+
+    public UserDBManager Users()
+    {
+        return (UserDBManager) tables.get(1);
     }
 
 }

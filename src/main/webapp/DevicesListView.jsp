@@ -5,7 +5,6 @@
 
 <%
     DAO db = (DAO) session.getAttribute("db");
-    LinkedList<Devices> deviceList = db.Devices().allDevices();
 %>
 
 <html>
@@ -17,33 +16,18 @@
 
 <h2 class="heading">IoT Device Catalogue</h2>
 
-<% if (deviceList != null && !deviceList.isEmpty()) { %>
 <table class="device-table">
-    <thead>
-    <tr>
-        <th>Device Name</th>
-        <th>Type</th>
-        <th>Unit Price</th>
-        <th>Quantity</th>
-        <th>Created By</th>
-    </tr>
-    </thead>
+    <% for (Devices device : db.Devices().allDevices()) { %>
     <tbody>
-    <% for (Devices device : deviceList) { %>
-    <tr>
-        <td>Example Device</td>
-        <td>Sensor</td>
-        <td>$15.99</td>
-        <td>10</td>
-        <td>admin</td>
-    </tr>
-
-    <% } %>
+        <tr>
+            <td><%=device.getDeviceName()%></td>
+            <td><%=device.getDevicePrice()%></td>
+            <td><%=device.getDeviceType()%></td>
+            <td><%=device.getDeviceQuantity()%></td>
+        </tr>
     </tbody>
+    <% } %>
 </table>
-<% } else { %>
-<p>No devices found.</p>
-<% } %>
 
 </body>
 </html>
