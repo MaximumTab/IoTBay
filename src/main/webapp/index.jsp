@@ -1,47 +1,41 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.iotbay.model.User" %>
-<%@ page import="com.iotbay.model.dao.DAO" %>
-<%@ page session="true" %>
-
 <%
-    DAO db = (DAO)session.getAttribute("db");
+    HttpSession session = request.getSession(false);
+    User user = (session != null) ? (User) session.getAttribute("user") : null;
 %>
 
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>IoTBay</title>
-    <link rel="stylesheet" href="StyleSheet.css">
+    <title>IoTBay - Home</title>
 </head>
 <body>
-<div class="topnav">
-    <div class="nav-left">
-        <img src="images/iotbay.png" alt="logo" width="60" height="60" />
-    </div>
-    <b class="welcome-text">Welcome to IoTBAY</b>
-    <div class="nav-right">
-        <button onclick="location.href='LoginPage.jsp'">Log in</button>
-        <button onclick="location.href='RegisterPage.jsp'">Register</button>
-        <button onclick="location.href='DevicesListView.jsp'">View Devices</button>
-    </div>
-</div>
+<h1>Welcome to IoTBay</h1>
 
-<div class="landingbody">
-    <div class="landing-text">
+<%
+    if (user != null) {
+%>
+<p>Hello, <strong><%= user.getFullName() %></strong>! (<%= user.getUserType() %>)</p>
 
-        <b>Shop</b>
-        <b>Anywhere</b>
-        <b>Anytime</b>
-        <p style="padding-top: 20px; font-size: 14px;">
-        </p>
-
-    </div>
-    <div class="landing-image">
-        <img src="images/shopping.png" alt="Shopping" />
-    </div>
-
-    <div class="current">
-    </div>
-</div>
+<ul>
+    <li><a href="ViewProfile.jsp">View Registration Details</a></li>
+    <li><a href="UpdateProfile.jsp">Update Registration Details</a></li>
+    <li><a href="AccessLogs.jsp">View Access Logs</a></li>
+    <li><a href="CancelAccount.jsp">Cancel Registration</a></li>
+    <li><a href="LogoutServlet">Logout</a></li>
+</ul>
+<%
+} else {
+%>
+<p>Please log in or register to access your account.</p>
+<ul>
+    <li><a href="LoginPage.jsp">Customer Login</a></li>
+    <li><a href="StaffLoginPage.jsp">Staff Login</a></li>
+    <li><a href="RegisterPage.jsp">Register</a></li>
+</ul>
+<%
+    }
+%>
 </body>
 </html>
+
