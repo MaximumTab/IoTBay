@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.iotbay.model.User" %>
 <%
-    HttpSession session = request.getSession(false);
+
     User user = (session != null) ? (User) session.getAttribute("user") : null;
 %>
 

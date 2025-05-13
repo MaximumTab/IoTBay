@@ -1,6 +1,7 @@
 package com.iotbay.controller;
 
 import com.iotbay.model.User;
+import com.iotbay.model.dao.DBConnector;
 import com.iotbay.model.dao.UserDBManager;
 
 import jakarta.servlet.ServletException;
@@ -32,22 +33,21 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        try {
+        try (DBConnector connector = new DBConnector()) {
+            Connection conn = connector.getConnection();
+
+            if (conn == null) {
+                throw new Exception("Database connection not found.");
+            }
+
             String hashedPassword = hashPassword(password);
-
-            HttpSession session = request.getSession();
-            Connection conn = (Connection) session.getAttribute("conn");
-            if (conn == null) throw new Exception("Database connection not found.");
-
             UserDBManager userManager = new UserDBManager(conn);
             User user = userManager.findUserByEmailAndPassword(email, hashedPassword);
 
-            if (user != null && user.getIsActive().equals("1")) {
+            if (user != null && "1".equals(user.getIsActive())) {
+                HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-
-
                 userManager.logUserLogin(user.getId());
-
                 response.sendRedirect("MainPage.jsp");
             } else {
                 request.setAttribute("errorMessage", "Invalid credentials or inactive account.");

@@ -1,45 +1,32 @@
 package com.iotbay.model.dao;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnector {
+public class DBConnector implements AutoCloseable {
     private Connection connection;
 
     static {
         try {
-            Class.forName("org.sqlite.JDBC");          // registers the driver
-            System.out.println("SQLite driver loaded");
+            Class.forName("org.sqlite.JDBC");
+            System.out.println("SQLite JDBC driver loaded");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();                       // will print if the jar still isn’t on the class‑path
+            e.printStackTrace();
         }
     }
 
     public DBConnector() {
-
-        System.setProperty("org.sqlite.lib.verbose", "true");
-        try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
         String os = System.getProperty("os.name").toLowerCase();
-        String url;
-        if (os.contains("mac")) {
-            url = "jdbc:sqlite=/Users/joelormerod/.SmartTomcat/smarttomcat/IoTBay/IoTBay/IotBay.db";
-        } else {
-            url = "jdbc:sqlite=C:/Users/yourWindowsUser/.smarttomcat/IoTBay/IotBay.db";
-        }
-
+        String path = "C:/Users/kevin/OneDrive/Documents/software development github/IoTBay/.smarttomcat/IOTBayWebsite/IotBay.db";
+        String url = "jdbc:sqlite:" + path;
+        System.out.println("Attempting to connect to DB at: " + url);
 
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);
             System.out.println("Connected to database");
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -48,16 +35,15 @@ public class DBConnector {
         return connection;
     }
 
-    public void closeConnection() {
+    @Override
+    public void close() {
         try {
-            if (connection != null) {
+            if (connection != null && !connection.isClosed()) {
                 connection.close();
-                System.out.println("Connection closed");
+                System.out.println("Database connection closed");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }

@@ -1,8 +1,8 @@
 package com.iotbay.controller;
 
 import com.iotbay.model.User;
-import com.iotbay.model.dao.UserDBManager;
 import com.iotbay.model.dao.DBConnector;
+import com.iotbay.model.dao.UserDBManager;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,39 +37,56 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String phone = request.getParameter("phone");
-        String userType = request.getParameter("userType"); // "customer" or "staff"
+        String userType = request.getParameter("userType");
 
         try {
+            System.out.println("Starting registration process for: " + email);
+
             // Hash the password
             String hashedPassword = hashPassword(password);
+            System.out.println("Password hashed successfully");
 
-            // 🔥 Create DB connection directly (Option 1)
+            // Create DB connection
             Connection conn = new DBConnector().getConnection();
+            System.out.println("Database connection established");
 
-            // Insert user
+            // Insert user into Users table
             UserDBManager userManager = new UserDBManager(conn);
             User user = new User(0, fullName, email, hashedPassword, phone, userType, "1");
             userManager.addUser(user);
+            System.out.println("User added to Users table");
 
-            // If registering as staff, add entry in StaffDetails
+            // If user is staff, add to StaffDetails
             if ("staff".equalsIgnoreCase(userType)) {
-                String sql = "INSERT INTO StaffDetails(staff_id, position, address) VALUES (?, ?, ?)";
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    int userId = userManager.getUserIdByEmail(email);
-                    stmt.setInt(1, userId);
-                    stmt.setString(2, "Unassigned");
-                    stmt.setString(3, "Unknown");
-                    stmt.executeUpdate();
+                int userId = userManager.getUserIdByEmail(email);
+                if (userId != -1) {
+                    addStaffDetails(conn, userId);
+                    System.out.println("StaffDetails added for user ID: " + userId);
+                } else {
+                    System.out.println("Failed to retrieve user ID for staff");
                 }
             }
 
-            conn.close(); // Close connection after use
+            conn.close();
+            System.out.println("Database connection closed");
             response.sendRedirect("index.jsp");
 
         } catch (Exception e) {
+            System.out.println("Exception during registration: " + e.getMessage());
             e.printStackTrace();
             request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
             request.getRequestDispatcher("RegisterPage.jsp").forward(request, response);
+        }
+    }
+
+    // Separate method for adding staff details
+    private void addStaffDetails(Connection conn, int userId) throws SQLException {
+        String sql = "INSERT INTO StaffDetails(staff_id, position, address) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.setString(2, "Unassigned");
+            stmt.setString(3, "Unknown");
+            stmt.executeUpdate();
         }
     }
 }

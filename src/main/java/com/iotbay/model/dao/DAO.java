@@ -8,6 +8,7 @@ import com.iotbay.model.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import com.iotbay.model.dao.UserDBManager;
 
 public class DAO {
     ArrayList<DBManager<?>> tables;
