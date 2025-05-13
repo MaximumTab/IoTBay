@@ -65,7 +65,6 @@ public class DevicesDBManager extends DBManager<Devices>
         LinkedList<Devices> devices = new LinkedList<>();
         String sql = "SELECT * FROM IoTDevices";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.executeQuery();
         ResultSet rs = ps.executeQuery();
 
         while (rs.next())
