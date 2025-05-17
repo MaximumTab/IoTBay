@@ -20,7 +20,11 @@ public class DevicesDBManager extends DBManager<Devices>
         ps.setString(2, device.getDeviceType());
         ps.setDouble(3, device.getDevicePrice());
         ps.setInt(4, device.getDeviceQuantity());
-        ps.setRef(5, device.getDeviceCreator());
+        if (device.getCreatedByUserId() != null) {
+            ps.setInt(5, device.getCreatedByUserId());
+        } else {
+            ps.setNull(5, java.sql.Types.INTEGER);
+        }
         ps.executeUpdate();
 
         ps = connection.prepareStatement("SELECT MAX(device_id) FROM IoTDevices");
@@ -37,7 +41,7 @@ public class DevicesDBManager extends DBManager<Devices>
         ps.setInt(1, device.getDeviceId());
         ResultSet rs = ps.executeQuery();
         rs.next();
-        return new Devices(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getDouble(4),rs.getInt(5), (User) rs.getRef(6));
+        return new Devices(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getDouble(4),rs.getInt(5), rs.getInt(6));
 
     }
 
@@ -48,7 +52,12 @@ public class DevicesDBManager extends DBManager<Devices>
         ps.setString(2, newDevices.getDeviceType());
         ps.setDouble(3, newDevices.getDevicePrice());
         ps.setInt(4, newDevices.getDeviceQuantity());
-        ps.setRef(5, newDevices.getDeviceCreator());
+        if (newDevices.getCreatedByUserId() != null) {
+            ps.setInt(5, newDevices.getCreatedByUserId());
+        } else {
+            ps.setNull(5, java.sql.Types.INTEGER);
+        }
+
         ps.setInt(6, oldDevices.getDeviceId());
         ps.executeUpdate();
     }
@@ -69,7 +78,7 @@ public class DevicesDBManager extends DBManager<Devices>
 
         while (rs.next())
         {
-            Devices device = new Devices(rs.getInt("device_id"), rs.getString("device_name"), rs.getString("device_type"), rs.getDouble("unit_price"), rs.getInt("quantity"), null);
+            Devices device = new Devices(rs.getInt("device_id"), rs.getString("device_name"), rs.getString("device_type"), rs.getDouble("unit_price"), rs.getInt("quantity"), rs.getInt("created_by"));
             devices.add(device);
         }
         return devices;
