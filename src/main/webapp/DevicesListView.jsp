@@ -1,40 +1,49 @@
-<%@ page import="com.iotbay.model.Devices" %>
-<%@ page import="com.iotbay.model.dao.DAO" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.iotbay.model.Devices" %>
 
 <%
-    DAO db = (DAO) session.getAttribute("db");
+    LinkedList<Devices> deviceList = (LinkedList<Devices>) request.getAttribute("deviceList");
+    LinkedList<String> deviceTypes = (LinkedList<String>) request.getAttribute("deviceTypes");
+    String searchName = request.getAttribute("searchName") != null ? (String) request.getAttribute("searchName") : "";
+    String[] selectedTypes = (String[]) request.getAttribute("selectedTypes");
 %>
-
-<html>
-<head>
-    <title>IoT Device Catalogue</title>
-    <link rel="stylesheet" href="StyleSheet.css">
-</head>
-<body>
-
+<link rel="stylesheet" href="<%= request.getContextPath() %>/StyleSheet.css">
 <h2 class="heading">IoT Device Catalogue</h2>
 
-<table class="device-table">
-    <% try {
-        String xd = System.getProperty("user.dir");
-        System.out.println(xd);
-        for (Devices device : db.Devices().allDevices()) { %>
-        <tbody>
-            <tr>
-                <td><%=device.getDeviceName()%></td>
-                <td><%=device.getDevicePrice()%></td>
-                <td><%=device.getDeviceType()%></td>
-                <td><%=device.getDeviceQuantity()%></td>
-            </tr>
-        </tbody>
-        <% }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } %>
-</table>
+<form method="get" action="DevicesServlet">
+    <label for="searchName">Search by Name:</label>
+    <input type="text" name="searchName" value="<%= searchName %>">
 
-</body>
-</html>
+    <fieldset>
+        <legend>Filter by Type:</legend>
+        <% for (String type : deviceTypes) {
+            boolean checked = selectedTypes != null && java.util.Arrays.asList(selectedTypes).contains(type); %>
+        <label>
+            <input type="checkbox" name="type" value="<%= type %>" <%= checked ? "checked" : "" %>> <%= type %>
+        </label>
+        <% } %>
+    </fieldset>
+
+    <button type="submit">Search</button>
+</form>
+
+<table class="device-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Type</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (Devices device : deviceList) { %>
+    <tr>
+        <td><%= device.getDeviceName() %></td>
+        <td><%= device.getDevicePrice() %></td>
+        <td><%= device.getDeviceType() %></td>
+        <td><%= device.getDeviceQuantity() %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>

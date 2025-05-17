@@ -22,7 +22,7 @@
     <div class="nav-right">
         <button onclick="location.href='LoginPage.jsp'">Log in</button>
         <button onclick="location.href='RegisterPage.jsp'">Register</button>
-        <button onclick="location.href='DevicesListView.jsp'">View Devices</button>
+        <button onclick="location.href='DevicesServlet'">View Devices</button>
     </div>
 </div>
 
