@@ -1,9 +1,5 @@
 package com.iotbay.model.dao;
 
-import com.iotbay.model.AccessLog;
-import com.iotbay.model.OrderItem;
-import com.iotbay.model.StaffDetail;
-import com.iotbay.model.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,6 +8,7 @@ import java.util.ArrayList;
 public class DAO
 {
     ArrayList<DBManager<?>> tables;
+    Connection connection;
 
     public DAO() throws SQLException
     {
@@ -19,14 +16,8 @@ public class DAO
         Connection connection = new DBConnector().getConnection();
         try
         {
-            tables.add(new AccessLogDBManager(connection));
-            tables.add(new DevicesDBManager(connection));
-            tables.add(new OrderDBManager(connection));
-            tables.add(new OrderItemDBManager(connection));
-            tables.add(new PaymentDBManager(connection));
-            tables.add(new StaffDetail(connection));
-            tables.add(new SupplierDBManager(connection));
             tables.add(new UserDBManager(connection));
+            tables.add(new CreditCardsDBManager(connection));
         }
         catch (SQLException ex)
         {
@@ -34,8 +25,17 @@ public class DAO
         }
     }
 
-    public AccessLogDBManager AccessLog()
-    {
-        return (AccessLogDBManager) tables.get(0);
+    public Connection getConnection(){
+        return connection;
     }
+
+    public UserDBManager Users() {
+        return (UserDBManager) tables.get(0);
+    }
+
+    public CreditCardsDBManager CreditCards() {
+        return (CreditCardsDBManager) tables.get(1);
+    }
+
 }
+

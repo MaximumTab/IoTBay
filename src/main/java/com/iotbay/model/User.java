@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private int userId;
+    private int cardId;
     private String fullName;
     private String email;
     private String passwordHash;
@@ -12,9 +13,10 @@ public class User implements Serializable {
     private String userType; // customer || staff
     private String isActive;
 
-    public User (int userId, String fullName, String email, String passwordHash, String phone, String userType, String isActive)
+    public User (int userId, int cardID, String fullName, String email, String passwordHash, String phone, String userType, String isActive)
     {
         this.userId = userId;
+        this.cardId = cardID;
         this.fullName = fullName;
         this.email = email;
         this.passwordHash = passwordHash;
@@ -27,7 +29,7 @@ public class User implements Serializable {
     public int getId() { return userId; }
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }
-    public String getPasswordHash () { return passwordHash; }
+    public String getPassword () { return passwordHash; }
     public String getPhone() { return phone; }
     public String getUserType() { return userType; }
     public String getIsActive() { return isActive; }

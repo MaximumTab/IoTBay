@@ -1,8 +1,21 @@
 
-<%@ page import="com.iotbay.model.Customer" %>
+<%@ page import="com.iotbay.model.User" %>
+<%@ page import="com.iotbay.model.dao.DAO" %>
+<%@ page import="com.iotbay.model.CreditCards" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
 
+
+<%--<%--%>
+<%--    DAO db = (DAO)session.getAttribute("db");--%>
+<%--    if (request.getParameter("save_payment") != null) {--%>
+<%--        String cardNumber = request.getParameter("card_number");--%>
+<%--        String ccv = request.getParameter("ccv");--%>
+<%--        String bsb = request.getParameter("bsb");--%>
+<%--        CreditCards newCard = new CreditCards(cardNumber,ccv,bsb);--%>
+<%--        db.CreditCards().add(newCard);--%>
+<%--}--%>
+<%--%>--%>
 
 <html>
 <head>
@@ -167,6 +180,7 @@
             <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
             <div class="product-name">com.iotbay.model.Devices Name</div>
             <div class="product-price">$999.99</div>
+            <a href="CheckOutPage.jsp">Purchase</a>
         </div>
         <div class="product">
             <img src="images/product-image.webp" alt="com.iotbay.model.Devices image">
@@ -216,7 +230,7 @@
 <footer>
 
     <p style="padding-top: 20px">
-        There are currently <%= Customer.getNumUsers() %> Online users!
+        There are currently ---- Online users!
     </p>
     <br>
     <p>© 2025 IoTBay - All rights reserved.</p>
