@@ -150,3 +150,26 @@ button:hover {
     width: 600px;
     text-align: center;
 }
+
+.heading {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.device-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.device-table th, .device-table td {
+    border: 1px solid #aaa;
+    padding: 10px;
+    text-align: left;
+}
+
+.device-table th {
+    background-color: #f2f2f2;
+}

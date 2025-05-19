@@ -1,7 +1,10 @@
 <%@ page import="com.iotbay.model.User" %>
+<%@ page import="com.iotbay.model.dao.DAO" %>
 <%@ page session="true" %>
+
 <%
     User loggedIn =  (User) session.getAttribute("LoggedInUser");
+    DAO db = (DAO)session.getAttribute("db");
 %>
 
 <!DOCTYPE html>
@@ -21,6 +24,7 @@
         <button onclick="location.href='LoginPage.jsp'">Log in</button>
         <button onclick="location.href='RegisterPage.jsp'">Register</button>
         <button onclick="location.href='MainPage.jsp'">Main Page</button>
+        <button onclick="location.href='DevicesServlet'">View Devices</button>
     </div>
 </div>
 
