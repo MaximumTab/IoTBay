@@ -76,7 +76,7 @@ public class LoginServlet extends HttpServlet {
                     logStmt.executeUpdate();
                 }
 
-                response.sendRedirect("WelcomePage.jsp");
+                response.sendRedirect("DevicesServlet");
 
             } else {
                 request.setAttribute("error", "Invalid email or password.");

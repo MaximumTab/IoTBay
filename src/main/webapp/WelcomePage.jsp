@@ -32,7 +32,7 @@
     } else {
     %>
     <p class="welcome-text">Thanks for joining us as a <strong>customer</strong>.</p>
-    <a href="MainPage.jsp" class="btn btn-update">Browse Products</a>
+    <button onclick="location.href='DevicesServlet'">View Devices</button>
     <%
         }
     %>
