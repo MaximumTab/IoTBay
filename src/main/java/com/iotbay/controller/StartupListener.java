@@ -9,11 +9,10 @@ import jakarta.servlet.http.HttpSessionListener;
 import com.iotbay.model.dao.DAO;
 import com.iotbay.model.dao.DBConnector;
 import com.iotbay.model.dao.DBManager;
-
 import java.sql.SQLException;
 
 @WebListener
-public class StartupListener implements ServletContextListener, HttpSessionListener {
+public class StartUpListener implements ServletContextListener, HttpSessionListener {
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("Server Started");
     }
@@ -31,4 +30,5 @@ public class StartupListener implements ServletContextListener, HttpSessionListe
 
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("Server Stopped");
-    }}
+    }
+}
