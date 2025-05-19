@@ -3,15 +3,16 @@ PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users (
                        user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        card_id INTEGER,
+                       card_id INTEGER,
                        full_name TEXT NOT NULL,
                        email TEXT UNIQUE NOT NULL,
                        password_hash TEXT NOT NULL,
                        phone TEXT,
                        user_type TEXT CHECK(user_type IN ('customer', 'staff')) NOT NULL,
                        is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1)),
-                         FOREIGN KEY (card_id) REFERENCES CreditCards(card_id) ON DELETE CASCADE
+                       FOREIGN KEY (card_id) REFERENCES CreditCards(card_id) ON DELETE CASCADE
 );
+
 
 DROP TABLE IF EXISTS AccessLogs;
 CREATE TABLE AccessLogs (
@@ -32,6 +33,8 @@ CREATE TABLE IoTDevices (
                             created_by INTEGER,
                             FOREIGN KEY (created_by) REFERENCES Users(user_id)
 );
+
+
 
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
@@ -81,8 +84,57 @@ CREATE TABLE Suppliers (
 );
 DROP TABLE IF EXISTS  CreditCards;
 CREATE TABLE CreditCards (
-                          card_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                          credit_card_number INTEGER NOT NULL,
-                          ccv INTEGER NOT NULL,
-                          bsb INTEGER NOT NULL
+                             card_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                             credit_card_number INTEGER NOT NULL,
+                             ccv INTEGER NOT NULL,
+                             bsb INTEGER NOT NULL
 );
+
+--20 sample Users
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Max Mustermann', 'max.mustermann@example.com', 'hash0001', '+1-555-0101', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Erika Musterfrau', 'erika.musterfrau@example.com', 'hash0002', '+1-555-0102', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'John Doe', 'john.doe@example.com', 'hash0003', '+1-555-0103', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Jane Doe', 'jane.doe@example.com', 'hash0004', '+1-555-0104', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Hans Meier', 'hans.meier@example.com', 'hash0005', '+1-555-0105', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Anna Schmidt', 'anna.schmidt@example.com', 'hash0006', '+1-555-0106', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Peter Müller', 'peter.mueller@example.com', 'hash0007', '+1-555-0107', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Laura Fischer', 'laura.fischer@example.com', 'hash0008', '+1-555-0108', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Mark Spencer', 'mark.spencer@example.com', 'hash0009', '+1-555-0109', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Emily Clark', 'emily.clark@example.com', 'hash0010', '+1-555-0110', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Tom Hanks', 'tom.hanks@example.com', 'hash0011', '+1-555-0111', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Nina Kunz', 'nina.kunz@example.com', 'hash0012', '+1-555-0112', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Oliver Twist', 'oliver.twist@example.com', 'hash0013', '+1-555-0113', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Chloe Brown', 'chloe.brown@example.com', 'hash0014', '+1-555-0114', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Luca Rossi', 'luca.rossi@example.com', 'hash0015', '+1-555-0115', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Sofia Silva', 'sofia.silva@example.com', 'hash0016', '+1-555-0116', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Akira Tanaka', 'akira.tanaka@example.com', 'hash0017', '+1-555-0117', 'customer', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Priya Patel', 'priya.patel@example.com', 'hash0018', '+1-555-0118', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Liam O''Brien', 'liam.obrien@example.com', 'hash0019', '+1-555-0119', 'staff', 1);
+INSERT INTO Users (card_id, full_name, email, password_hash, phone, user_type, is_active) VALUES (NULL, 'Zoe Schneider', 'zoe.schneider@example.com', 'hash0020', '+1-555-0120', 'staff', 1);
+
+-- 20 sample IoT devices
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Enviro Sensor',        'sensor',   254.87, 34, 12);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Smart Plug',           'actuator',  58.03, 69, 18);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Motion Detector',      'sensor',    32.10, 46,  5);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Thermostat Pro',       'actuator', 292.71, 44,  5);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Light Strip',          'actuator', 105.66, 10, 18);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Water Leak Sensor',    'sensor',    24.95, 30, 12);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('CO2 Monitor',          'sensor',   153.55, 18,  5);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Smart Lock',           'actuator', 283.32, 88, 12);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Air Quality Sensor',   'sensor',   181.21, 73, 19);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Soil Moisture Probe',  'sensor',   170.79, 30, 18);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Energy Meter',         'sensor',   269.02, 98, 18);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Smoke Alarm',          'sensor',    61.12, 11, 18);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Door/Window Sensor',   'sensor',   115.30, 18, 14);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Smart Camera',         'sensor',   262.69, 92,  6);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Humidity Sensor',      'sensor',   140.06, 61, 19);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('UV Index Meter',       'sensor',   131.89, 85, 20);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Pressure Gauge',       'sensor',    60.21,  5, 14);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Gas Leak Detector',    'sensor',   295.90, 43,  6);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Vibration Sensor',     'sensor',   296.36, 60, 20);
+INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Beacon Tag',           'sensor',   224.63, 60,  1);
+
+INSERT INTO StaffDetails (staff_id, position, address) VALUES
+(1, 'Sales Manager', '123 Main St'),
+(2, 'Technician', '456 Oak Rd'),
+(3, 'pick and pack', '569 him Rd');
