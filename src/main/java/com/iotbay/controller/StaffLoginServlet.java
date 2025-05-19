@@ -44,6 +44,7 @@ public class StaffLoginServlet extends HttpServlet {
                 if (rs.next()) {
                     user = new User(
                             rs.getInt("user_id"),
+                            rs.getInt("card_id"),
                             rs.getString("full_name"),
                             rs.getString("email"),
                             rs.getString("password_hash"),

@@ -33,6 +33,7 @@ public class User implements Serializable {
     public String getPhone() { return phone; }
     public String getUserType() { return userType; }
     public String getIsActive() { return isActive; }
+    public String getPasswordHash() { return passwordHash; }
 
     //Setter Methods
     public void setId(int id) { userId = id; }
@@ -42,5 +43,6 @@ public class User implements Serializable {
     public void setPhone(String phone) { this.phone = phone; }
     public void setUserType(String userType) { this.userType = userType; }
     public void setIsActive(String isActive) { this.isActive = isActive; }
+    public void setPassword(String password) { this.passwordHash = password; }
 
 }
