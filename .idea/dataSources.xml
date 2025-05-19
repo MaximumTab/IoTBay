@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="IotBay.db" uuid="ef6b15f8-5072-478c-951b-5bf1403771bc">
+    <data-source source="LOCAL" name="IotBay.db" uuid="6da048cc-9b95-4571-882f-4a4dca1f7051">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$USER_HOME$/.SmartTomcat/IoTBay/IOTBayWebsite/IotBay.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$USER_HOME$/.SmartTomcat/LogoutPage.jsp/IOTBayWebsite/IotBay.db</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
       </jdbc-additional-properties>
