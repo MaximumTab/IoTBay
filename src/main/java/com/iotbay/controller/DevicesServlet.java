@@ -1,6 +1,7 @@
 package com.iotbay.controller;
 
 import com.iotbay.model.Devices;
+import com.iotbay.model.User;
 import com.iotbay.model.dao.DAO;
 
 import jakarta.servlet.ServletException;
@@ -32,20 +33,16 @@ public class DevicesServlet extends HttpServlet {
         }
 
         try {
-            // Get all devices and types
             LinkedList<Devices> allDevices = dao.Devices().allDevices();
 
-            // Get distinct device types
             LinkedList<String> deviceTypes = allDevices.stream()
                     .map(Devices::getDeviceType)
                     .distinct()
                     .collect(Collectors.toCollection(LinkedList::new));
 
-            // Read query parameters
             String searchName = req.getParameter("searchName");
             String[] selectedTypes = req.getParameterValues("type");
 
-            // Filter logic
             LinkedList<Devices> filteredDevices = allDevices.stream()
                     .filter(device -> {
                         boolean nameMatches = (searchName == null || searchName.isEmpty())
@@ -58,14 +55,19 @@ public class DevicesServlet extends HttpServlet {
                     })
                     .collect(Collectors.toCollection(LinkedList::new));
 
-            // Pass data to JSP
+            User currentUser = (User) session.getAttribute("user");
+            boolean isStaff = currentUser != null && "staff".equalsIgnoreCase(currentUser.getUserType());
+            req.setAttribute("isStaff", isStaff);
+
             req.setAttribute("deviceList", filteredDevices);
             req.setAttribute("deviceTypes", deviceTypes);
             req.setAttribute("searchName", searchName);
             req.setAttribute("selectedTypes", selectedTypes);
+
             req.getRequestDispatcher("DevicesListView.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new ServletException("Error retrieving device list", e);
         }
     }
 }
+

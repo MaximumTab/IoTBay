@@ -2,23 +2,12 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="StyleSheet.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/DevicesCss.css">
 </head>
-<body class="profile-page">
-
+<body>
+<div class="add-device-container">
 <div class="profile-container">
     <h2 class="section-title">User Login</h2>
-
-    <!-- Show error message if set -->
-    <%
-        String error = (String) request.getAttribute("error");
-        if (error != null) {
-    %>
-    <p class="error-message"><%= error %></p>
-    <%
-        }
-    %>
-
     <form method="post" action="login" class="profile-form">
         <label for="email">Email:</label><br>
         <input type="email" name="email" id="email" required><br><br>
@@ -33,7 +22,9 @@
 
     <p>Don't have an account? <a href="RegisterPage.jsp">Register here</a></p>
     <p>Staff? <a href="StaffLogin.jsp">Staff login</a></p>
+    <p>Go back to home page. <a href="index.jsp">Home Page here</a>.</p>
 </div>
 
+</div>
 </body>
 </html>

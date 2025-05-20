@@ -39,30 +39,35 @@
 <html>
 <head>
     <title>Edit Device</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/StyleSheet.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/DevicesCss.css">
 </head>
 <body>
 
-<h2>Edit Device</h2>
+<div class="add-device-container">
+    <h2>Edit IoT Device</h2>
 
-<form method="post" action="<%= request.getContextPath() %>/DeviceEditServlet">
-    <input type="hidden" name="deviceId" value="<%= device.getDeviceId() %>">
+    <form method="post" action="<%= request.getContextPath() %>/DeviceEditServlet">
+        <input type="hidden" name="deviceId" value="<%= device.getDeviceId() %>">
 
-    <label for="deviceName">Device Name:</label>
-    <input type="text" name="deviceName" id="deviceName" value="<%= device.getDeviceName() %>" required><br>
+        <label for="deviceName">Device Name:</label>
+        <input type="text" name="deviceName" id="deviceName" value="<%= device.getDeviceName() %>" required>
 
-    <label for="deviceType">Device Type:</label>
-    <input type="text" name="deviceType" id="deviceType" value="<%= device.getDeviceType() %>" required><br>
+        <label for="deviceType">Device Type:</label>
+        <input type="text" name="deviceType" id="deviceType" value="<%= device.getDeviceType() %>" required>
 
-    <label for="devicePrice">Price:</label>
-    <input type="number" step="0.01" name="devicePrice" id="devicePrice" value="<%= device.getDevicePrice() %>" required><br>
+        <label for="devicePrice">Price:</label>
+        <input type="number" step="0.01" name="devicePrice" id="devicePrice" value="<%= device.getDevicePrice() %>" required>
 
-    <label for="deviceQuantity">Quantity:</label>
-    <input type="number" name="deviceQuantity" id="deviceQuantity" value="<%= device.getDeviceQuantity() %>" required><br>
+        <label for="deviceQuantity">Quantity:</label>
+        <input type="number" name="deviceQuantity" id="deviceQuantity" value="<%= device.getDeviceQuantity() %>" required>
 
-    <button type="submit">Save Changes</button>
-    <a href="<%= request.getContextPath() %>/DevicesListView.jsp"><button type="button">Cancel</button></a>
-</form>
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <form method="get" action="<%= request.getContextPath() %>/DevicesServlet">
+        <button type="submit">Return to Catalogue</button>
+    </form>
+</div>
 
 </body>
 </html>

@@ -6,6 +6,7 @@
     <title>Title</title>
   </head>
   <body>
+  <button onclick="location.href='DevicesServlet'">View Devices</button>
   
   </body>
 </html>

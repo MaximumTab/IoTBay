@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @WebServlet("/DeviceAddServlet")
 public class DeviceAddServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         DAO dao = (DAO) session.getAttribute("db");
 
@@ -28,7 +28,12 @@ public class DeviceAddServlet extends HttpServlet {
 
         String name = req.getParameter("deviceName");
         String type = req.getParameter("deviceType");
-        double price = Double.parseDouble(req.getParameter("devicePrice"));
+        String priceStr = req.getParameter("devicePrice");
+        if (priceStr == null || priceStr.isBlank()) {
+            throw new ServletException("Missing device price");
+        }
+        double price = Double.parseDouble(priceStr);
+
         int quantity = Integer.parseInt(req.getParameter("deviceQuantity"));
 
         try {

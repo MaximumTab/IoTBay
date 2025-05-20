@@ -1,0 +1,59 @@
+/* DevicesCss.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.add-device-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+    box-sizing: border-box;
+}
+
+.add-device-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-device-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-device-container label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.add-device-container input[type="text"],
+.add-device-container input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-device-container button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #405acd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-device-container button:hover {
+    background-color: #2e45a3;
+}

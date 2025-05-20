@@ -11,6 +11,9 @@ public class Devices implements Serializable
     double devicePrice;
     int deviceQuantity;
 
+    public Devices()
+    {
+    }
 
     public Devices(int deviceId, String deviceName, String deviceType, double devicePrice, int deviceQuantity, Integer createdByUserId)
     {
@@ -21,6 +24,8 @@ public class Devices implements Serializable
         this.deviceQuantity = deviceQuantity;
         this.createdByUserId = createdByUserId;
     }
+
+
 
     public int getDeviceId() { return deviceId; }
     public String getDeviceName() { return deviceName; }
