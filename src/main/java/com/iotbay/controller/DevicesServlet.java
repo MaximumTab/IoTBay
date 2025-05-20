@@ -55,7 +55,6 @@ public class DevicesServlet extends HttpServlet {
                     })
                     .collect(Collectors.toCollection(LinkedList::new));
 
-            // ✅ Staff check
             User currentUser = (User) session.getAttribute("user");
             boolean isStaff = currentUser != null && "staff".equalsIgnoreCase(currentUser.getUserType());
             req.setAttribute("isStaff", isStaff);
