@@ -13,6 +13,11 @@ public class User implements Serializable {
     private String userType; // customer || staff
     private String isActive;
 
+    public User()
+    {
+
+    }
+
     public User (int userId, int cardID, String fullName, String email, String passwordHash, String phone, String userType, String isActive)
     {
         this.userId = userId;
