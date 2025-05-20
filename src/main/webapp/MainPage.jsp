@@ -149,6 +149,7 @@
         <a href="wip.jsp">Account</a>
         <a href="LogoutPage.jsp">Log Out</a>
         <a href="wip.jsp">My Cart</a>
+        <a href="PaymentHistory.jsp">Payment History</a>
     </nav>
 </header>
 

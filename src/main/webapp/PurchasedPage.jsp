@@ -1,21 +1,23 @@
+<%@ page import="com.iotbay.model.PaymentHistory" %>
 <%@ page import="com.iotbay.model.dao.DAO" %>
 <%@ page import="com.iotbay.model.CreditCards" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 
-
 <%
     DAO db = (DAO)session.getAttribute("db");
+    CreditCards card = (CreditCards)session.getAttribute("card");
     if (db == null) {
         db = new DAO();
         session.setAttribute("db", db);
     }
 %>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout</title>
+    <title>Payment History</title>
     <style>
         body {
             background-color: #f3f4f6;
@@ -24,7 +26,7 @@
             margin: 0;
         }
 
-        .checkout-container {
+        .History-container {
             max-width: 600px;
             margin: 0 auto;
             background: #ffffff;
@@ -46,8 +48,8 @@
             color: #444;
         }
 
-        input[type="number"],
-        input[type="text"]{
+        input[type="text"],
+        input[type="number"]{
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
@@ -88,8 +90,8 @@
             background-color: #1d4ed8;
         }
 
-        /* Saved Payment Section */
-        details {
+        /* Saved history Section */
+        .receipt-details {
             margin-bottom: 25px;
             background-color: #f9fafb;
             padding: 15px;
@@ -105,74 +107,25 @@
             outline: none;
         }
 
-        .saved-card {
+        .saved-receipt {
             padding: 10px 0;
             border-bottom: 1px solid #e5e7eb;
             font-size: 0.95rem;
             color: #444;
         }
 
-        .saved-card:last-child {
+        .saved-receipt:last-child {
             border-bottom: none;
         }
     </style>
 </head>
 <body>
-<div class="checkout-container">
-    <h1>Checkout</h1>
-    <h2>$999.99</h2>
-    <!-- Saved Payment Dropdown -->
-    <details>
-        <summary>View saved payment methods</summary>
-        <%
-            List<CreditCards> savedCards = db.CreditCards().getAllCards();
-            System.out.println("Cards retrieved: " + (savedCards != null ? savedCards.size() : "null"));
-
-            if (savedCards != null && !savedCards.isEmpty()) {
-                for (CreditCards card : savedCards) {
-        %>
-        <div class="saved-card">
-            **** **** **** <%= card.getCreditCardNumber().substring(card.getCreditCardNumber().length() - 4) %>
-
-            <form method="POST" action="DeleteCardServlet" style="display:inline;">
-                <input type="hidden" name="card_id" value="<%= card.getCardId() %>" />
-                <button type="submit">Delete</button>
-            </form>
-            <form method="POST" action="SetCardServlet" style="display:inline;">
-                <input type="hidden" name="card_id" value="<%= card.getCardId() %>" />
-                <button type="submit">Edit</button>
-            </form>
-            <form method="POST" action="ReceiptGeneratorServlet" style="display:inline;">
-                <input type="hidden" name="card_id" value="<%= card.getCardId() %>" />
-                <button type="submit">Use Card</button>
-            </form>
-        </div>
-        <%
-            }
-        } else {
-        %>
-        <div class="saved-card">No saved cards available.</div>
-        <%
-            }
-        %>
-    </details>
-
-    <!-- Payment Form -->
-    <form method="POST" action="SaveCardServlet">
-        <section>
-            <h2>Payment Details</h2>
-
-            <input type="number" name="card_number" placeholder="Card Number" min="1000000000000000" max="9999999999999999" required />
-            <input type="number" name="ccv" placeholder="CCV" min="100" max="999" required />
-            <input type="number" name="bsb" placeholder="BSB" min="10000000" max="99999999" required />
-
-            <label>
-                <input type="checkbox" name="save_payment" />
-                Save payment details for future use
-            </label>
-        </section>
-
-        <button type="submit">Complete Purchase</button>
+<div class = History-container>
+    <div class="saved-receipt">
+        <strong>Thanks for your Purchase</strong>
+    </div>
+    <form method="POST" action="ReceiptGeneratorServlet">
+        <button type="submit">Return to MainPage</button>
     </form>
 </div>
 </body>

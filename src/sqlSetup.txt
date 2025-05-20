@@ -86,3 +86,10 @@ CREATE TABLE CreditCards (
                           ccv INTEGER NOT NULL,
                           bsb INTEGER NOT NULL
 );
+
+CREATE TABLE PaymentHistory (
+                         payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                         payment_card_number TEXT NOT NULL,
+                         payment_amount TEXT NOT NULL,
+                         payment_date TEXT NOT NULL
+);

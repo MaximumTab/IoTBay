@@ -23,11 +23,13 @@ public class SaveCardServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         DAO db = (DAO)session.getAttribute("db");
+        String cardNumber = req.getParameter("card_number");
+        String ccv = req.getParameter("ccv");
+        String bsb = req.getParameter("bsb");
+        CreditCards newCard = new CreditCards(cardNumber,ccv,bsb);
+        session.setAttribute("card", newCard);
         if (req.getParameter("save_payment") != null) {
-            String cardNumber = req.getParameter("card_number");
-            String ccv = req.getParameter("ccv");
-            String bsb = req.getParameter("bsb");
-            CreditCards newCard = new CreditCards(cardNumber,ccv,bsb);
+
             try {
                 db.CreditCards().add(newCard);
                 System.out.println("SaveCardServlet: Card added");
@@ -35,7 +37,7 @@ public class SaveCardServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-        resp.sendRedirect("MainPage.jsp");
+        resp.sendRedirect("PurchasedPage.jsp");
     }
 }
 
