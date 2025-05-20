@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @WebServlet("/DeviceDeleteServlet")
 public class DeviceDeleteServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         DAO dao = (DAO) session.getAttribute("db");
 
