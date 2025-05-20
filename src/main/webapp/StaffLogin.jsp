@@ -32,6 +32,7 @@
   <hr class="divider">
 
   <p>Not staff? <a href="LoginPage.jsp">Go to customer login</a></p>
+  <p>Go back to home page. <a href="index.jsp">Home Page here</a>.</p>
 </div>
 
 </body>
