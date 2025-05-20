@@ -16,6 +16,10 @@ public class DBConnector {
             throw new RuntimeException(e);
         }
         String url = "jdbc:sqlite:IotBay.db";
+<<<<<<< HEAD
+=======
+
+>>>>>>> a21e133 (Initial commit from IntelliJ)
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);

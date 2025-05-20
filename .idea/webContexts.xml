@@ -3,6 +3,13 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+<<<<<<< HEAD
+=======
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/CheckOutPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/MainPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/DevicesEditView.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/ProfileEditor.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+>>>>>>> a21e133 (Initial commit from IntelliJ)
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WelcomePage.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
