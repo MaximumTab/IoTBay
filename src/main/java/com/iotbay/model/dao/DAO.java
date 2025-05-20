@@ -19,6 +19,7 @@ public class DAO
             tables.add(new UserDBManager(connection));
             tables.add(new CreditCardsDBManager(connection));
             tables.add(new PaymentHistoryDBManager(connection));
+            tables.add(new DevicesDBManager(connection));
         }
         catch (SQLException ex)
         {
@@ -40,5 +41,6 @@ public class DAO
 
     public PaymentHistoryDBManager PaymentHistory() {return (PaymentHistoryDBManager) tables.get(2);}
 
+    public DevicesDBManager Devices() {return (DevicesDBManager) tables.get(3);}
 }
 

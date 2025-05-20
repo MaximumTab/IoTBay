@@ -15,7 +15,11 @@ public class DBConnector {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+
         String url = "jdbc:sqlite:IotBay.db";
+        //String url = "jdbc:sqlite:C:/Users/paken/.SmartTomcat/IoTBay/IOTBayWebsite/IotBay.db";
+
 
         try {
             connection = DriverManager.getConnection(url);
