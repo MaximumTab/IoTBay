@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="StyleSheet.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/DevicesCss.css">
 </head>
-<body class="profile-page">
-
+<body>
+<div class="add-device-container">
 <div class="profile-container">
     <h2 class="section-title">User Login</h2>
     <form method="post" action="login" class="profile-form">
@@ -25,5 +25,6 @@
     <p>Go back to home page. <a href="index.jsp">Home Page here</a>.</p>
 </div>
 
+</div>
 </body>
 </html>

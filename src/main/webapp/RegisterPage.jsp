@@ -1,10 +1,11 @@
-<<<<<<< Updated upstream
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/DevicesCss.css">
 <head>
     <title>Register</title>
 </head>
 <body>
+<div class="add-device-container">
 <h2>User Registration</h2>
 
 <form action="register" method="post">
@@ -32,6 +33,6 @@
 <p>Already have an account? <a href="LoginPage.jsp">Login here</a>.</p>
 <p>Go back to home page. <a href="index.jsp">Home Page here</a>.</p>
 
-
+</div>
 </body>
 </html>

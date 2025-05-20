@@ -23,6 +23,7 @@
         { %>
         <a href="<%= request.getContextPath() %>/logout" style="color: white; text-decoration: none;">Logout</a>
         <% } %>
+        <a href="<%= request.getContextPath() %>/ProfileEditor.jsp" style="color: white; margin-right: 20px; text-decoration: none;">edit profile</a>
     </div>
     <% if (currentUser != null)
     { %>

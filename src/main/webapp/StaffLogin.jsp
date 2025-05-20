@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>Staff Login</title>
-  <link rel="stylesheet" href="StyleSheet.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/DevicesCss.css">
 </head>
 <body class="profile-page">
-
+<div class="add-device-container">
 <div class="profile-container">
   <h2 class="section-title">Staff Login</h2>
 
@@ -34,6 +34,6 @@
   <p>Not staff? <a href="LoginPage.jsp">Go to customer login</a></p>
   <p>Go back to home page. <a href="index.jsp">Home Page here</a>.</p>
 </div>
-
+</div>
 </body>
 </html>
