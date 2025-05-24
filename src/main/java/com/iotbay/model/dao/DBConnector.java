@@ -20,11 +20,11 @@ public class DBConnector {
         //String url = "jdbc:sqlite:C:/Users/paken/.SmartTomcat/IoTBay/IOTBayWebsite/IotBay.db";
 
 
-        String url = "jdbc:sqlite:C:/Users/kevin/.SmartTomcat/IoTBay/IOTBayWebsite/IotBay.db";
+        //String url = "jdbc:sqlite:C:/Users/kevin/.SmartTomcat/IoTBay/IOTBayWebsite/IotBay.db";
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);
-            System.out.println("✅ Connected to: " + url);
+            System.out.println("Connected to: " + url);
         } catch (SQLException e) {
             e.printStackTrace();
         }
