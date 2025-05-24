@@ -12,7 +12,7 @@ import com.iotbay.model.dao.DBManager;
 import java.sql.SQLException;
 
 @WebListener
-public class StartUpListener implements ServletContextListener, HttpSessionListener {
+public class StartupListener implements ServletContextListener, HttpSessionListener {
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("Server Started");
     }

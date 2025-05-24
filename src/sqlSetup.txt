@@ -1,6 +1,14 @@
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS AccessLogs;
+DROP TABLE IF EXISTS  CreditCards;
+DROP TABLE IF EXISTS OrderItems;
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS StaffDetails;
+DROP TABLE IF EXISTS IoTDevices;
+DROP TABLE IF EXISTS Payments;
 DROP TABLE IF EXISTS Users;
+
 CREATE TABLE Users (
                        user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                        card_id INTEGER,
@@ -14,7 +22,7 @@ CREATE TABLE Users (
 );
 
 
-DROP TABLE IF EXISTS AccessLogs;
+
 CREATE TABLE AccessLogs (
                             log_id INTEGER PRIMARY KEY AUTOINCREMENT,
                             user_id INTEGER NOT NULL,
@@ -23,7 +31,7 @@ CREATE TABLE AccessLogs (
                             FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS IoTDevices;
+
 CREATE TABLE IoTDevices (
                             device_id INTEGER PRIMARY KEY AUTOINCREMENT,
                             device_name TEXT NOT NULL,
@@ -36,7 +44,7 @@ CREATE TABLE IoTDevices (
 
 
 
-DROP TABLE IF EXISTS Orders;
+
 CREATE TABLE Orders (
                         order_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         customer_id INTEGER NOT NULL,
@@ -44,7 +52,7 @@ CREATE TABLE Orders (
                         status TEXT DEFAULT 'saved' CHECK(status IN ('saved', 'submitted', 'cancelled')),
                         FOREIGN KEY (customer_id) REFERENCES Users(user_id)
 );
-DROP TABLE IF EXISTS OrderItems;
+
 CREATE TABLE OrderItems (
                             item_id INTEGER PRIMARY KEY AUTOINCREMENT,
                             order_id INTEGER NOT NULL,
@@ -54,7 +62,7 @@ CREATE TABLE OrderItems (
                             FOREIGN KEY (device_id) REFERENCES IoTDevices(device_id)
 );
 
-DROP TABLE IF EXISTS Payments;
+
 CREATE TABLE Payments (
                           payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
                           order_id INTEGER NOT NULL,
@@ -65,7 +73,7 @@ CREATE TABLE Payments (
                           FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS StaffDetails;
+
 CREATE TABLE StaffDetails (
                               staff_id INTEGER PRIMARY KEY,
                               position TEXT,
@@ -82,12 +90,20 @@ CREATE TABLE Suppliers (
                            address TEXT,
                            is_active INTEGER DEFAULT 1 CHECK(is_active IN (0, 1))
 );
-DROP TABLE IF EXISTS  CreditCards;
+
 CREATE TABLE CreditCards (
                              card_id INTEGER PRIMARY KEY AUTOINCREMENT,
                              credit_card_number INTEGER NOT NULL,
                              ccv INTEGER NOT NULL,
                              bsb INTEGER NOT NULL
+);
+
+DROP TABLE IF EXISTS PaymentHistory;
+CREATE TABLE PaymentHistory (
+                                payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                payment_card_number TEXT NOT NULL,
+                                payment_amount TEXT NOT NULL,
+                                payment_date TEXT NOT NULL
 );
 
 --20 sample Users
@@ -135,6 +151,6 @@ INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_
 INSERT INTO IoTDevices (device_name, device_type, unit_price, quantity, created_by) VALUES ('Beacon Tag',           'sensor',   224.63, 60,  1);
 
 INSERT INTO StaffDetails (staff_id, position, address) VALUES
-(1, 'Sales Manager', '123 Main St'),
-(2, 'Technician', '456 Oak Rd'),
-(3, 'pick and pack', '569 him Rd');
+                                                           (1, 'Sales Manager', '123 Main St'),
+                                                           (2, 'Technician', '456 Oak Rd'),
+                                                           (3, 'pick and pack', '569 him Rd');

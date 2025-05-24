@@ -2,8 +2,10 @@
 <%@ page import="com.iotbay.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
+<!DOCTYPE html>
 <html>
 <head>
+    <title>Welcome to IoTBay</title>
     <link rel="stylesheet" href="StyleSheet.css">
     <title>Welcome Page</title>
     <style>

@@ -2,6 +2,7 @@ package com.iotbay.controller;
 
 import com.iotbay.model.User;
 import com.iotbay.model.dao.UserDBManager;
+import com.iotbay.util.PasswordUtils;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,44 +26,68 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-            HttpSession session = request.getSession();
-            Connection conn = (Connection) session.getAttribute("conn");
-            if (conn == null) {
-                throw new Exception("Database connection not found in session.");
+            String hashedPassword = PasswordUtils.hashPassword(password);
+            Class.forName("org.sqlite.JDBC");
+            String dbPath = System.getProperty("user.dir") + "/IotBay.db";
+            String dbURL = "jdbc:sqlite:" + dbPath + "?busy_timeout=5000";
+
+            User user = null;
+
+            try (
+                    Connection conn = DriverManager.getConnection(dbURL);
+                    PreparedStatement stmt = conn.prepareStatement(
+                            "SELECT * FROM Users WHERE email = ? AND password_hash = ? AND is_active = 1")
+            ) {
+                stmt.setString(1, email);
+                stmt.setString(2, hashedPassword);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    user = new User(
+                            rs.getInt("user_id"),
+                            rs.getInt("card_id"),
+                            rs.getString("full_name"),
+                            rs.getString("email"),
+                            rs.getString("password_hash"),
+                            rs.getString("phone"),
+                            rs.getString("user_type"),
+                            rs.getString("is_active")
+                    );
+                }
+                rs.close();
             }
 
-            UserDBManager userManager = new UserDBManager(conn);
+            if (user != null) {
 
-            System.out.println("DEBUG: Email = " + email);
-            System.out.println("DEBUG: Password = " + password);
-
-            // No hashing, compare directly
-            User user = userManager.findUserByEmailAndPassword(email, password);
-
-            if (user != null && user.getIsActive().equals("1")) {
-                System.out.println("DEBUG: User found = " + user.getEmail());
-
-                session.setAttribute("user", user);
-
-                if (user.getEmail().equalsIgnoreCase("123@gmail.com")) {
-                    List<User> allUsers = userManager.getAllUsers();
-                    System.out.println("DEBUG: All users fetched = " + allUsers.size());
-
-                    session.setAttribute("allUsers", allUsers);
-                    response.sendRedirect("SystemAdmin.jsp");
-                } else {
-                    response.sendRedirect("WelcomePage.jsp");
+                // Block staff from logging in here
+                if ("staff".equalsIgnoreCase(user.getUserType())) {
+                    request.setAttribute("error", "Staff must log in via the staff portal.");
+                    request.getRequestDispatcher("StaffLogin.jsp").forward(request, response);
+                    return;
                 }
 
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+
+                // Log login time
+                try (
+                        Connection conn = DriverManager.getConnection(dbURL);
+                        PreparedStatement logStmt = conn.prepareStatement(
+                                "INSERT INTO AccessLogs (user_id, login_time) VALUES (?, datetime('now'))")
+                ) {
+                    logStmt.setInt(1, user.getId());
+                    logStmt.executeUpdate();
+                }
+
+                response.sendRedirect("DevicesServlet");
+
             } else {
-                System.out.println("DEBUG: Invalid login or inactive user");
-                request.setAttribute("errorMessage", "Invalid login credentials.");
+                request.setAttribute("error", "Invalid email or password.");
                 request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
             }
 
         } catch (Exception e) {
-            System.out.println("DEBUG: Exception = " + e.getMessage());
-            request.setAttribute("errorMessage", "Error: " + e.getMessage());
+            request.setAttribute("error", "Login failed: " + e.getMessage());
             request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
         }
     }
