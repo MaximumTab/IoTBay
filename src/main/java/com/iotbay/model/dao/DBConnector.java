@@ -1,7 +1,6 @@
 package com.iotbay.model.dao;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -15,14 +14,13 @@ public class DBConnector {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        String url = "jdbc:sqlite:IotBay.db";
 
+        String url = "jdbc:sqlite:C:/Users/kevin/.SmartTomcat/IoTBay/IOTBayWebsite/IotBay.db";
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);
-            System.out.println("Connected to database");
-        }
-        catch (SQLException e) {
+            System.out.println("✅ Connected to: " + url);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -37,10 +35,8 @@ public class DBConnector {
                 connection.close();
                 System.out.println("Connection closed");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }

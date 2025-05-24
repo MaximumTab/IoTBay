@@ -216,7 +216,8 @@
 <footer>
 
     <p style="padding-top: 20px">
-        There are currently <%= Customer.getNumUsers() %> Online users!
+        There are currently <%= Customer.getNumOnlineUsers() %> Online users!
+
     </p>
     <br>
     <p>© 2025 IoTBay - All rights reserved.</p>
