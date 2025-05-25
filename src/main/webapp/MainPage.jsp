@@ -245,6 +245,7 @@
         <a href="LogoutPage.jsp">Logout</a>
         <a href="WelcomePage.jsp">Welcome</a>
         <a href="Terms.jsp">Terms & Conditions</a>
+        <a href="OrderManagement.jsp">Order</a>
     </nav>
 
 </footer>
