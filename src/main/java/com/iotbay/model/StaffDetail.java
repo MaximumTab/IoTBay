@@ -4,12 +4,15 @@ import java.io.Serializable;
 
 public class StaffDetail implements Serializable
 {
-    int staffId;
-    String staffPosition;
-    String staffAddress;
-    User staffUser;
+    private int staffId;
+    private String staffPosition;
+    private String staffAddress;
+    private User staffUser;
 
-    public StaffDetail (int staffId, String staffPosition, String staffAddress, User staffUser)
+    public StaffDetail() {
+    }
+
+    public StaffDetail(int staffId, String staffPosition, String staffAddress, User staffUser)
     {
         this.staffId = staffId;
         this.staffPosition = staffPosition;

@@ -168,6 +168,7 @@
         <button onclick="location.href='RegisterPage.jsp'">Register</button>
         <button onclick="location.href='MainPage.jsp'">Main Page</button>
         <button onclick="location.href='DevicesServlet'">View Devices</button>
+        <button onclick="location.href='staff?action=list'">Staff Management</button>
     </div>
 </div>
 
