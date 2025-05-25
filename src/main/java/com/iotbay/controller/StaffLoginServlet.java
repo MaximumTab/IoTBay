@@ -78,7 +78,7 @@ public class StaffLoginServlet extends HttpServlet {
                     logStmt.executeUpdate();
                 }
 
-                response.sendRedirect("SystemAdmin.jsp");
+                response.sendRedirect("DevicesServlet");
 
             } else {
                 request.setAttribute("error", "Invalid email or password.");
