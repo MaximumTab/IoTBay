@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: #405ACD;
+    padding: 10px;
+}
+
+nav a {
+    color: #FFF;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+h2 {
+    color: #405ACD;
+    margin: 20px;
+}
+
+.btn {
+    background: #405ACD;
+    color: #FFF;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #9FC0E8;
+    color: #000;
+}
+
+form {
+    margin: 0 20px 20px;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 6px;
+    margin: 4px 0;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    width: 100%;
+    max-width: 300px;
+}
+
+table {
+    width: calc(100% - 40px);
+    margin: 0 20px 20px;
+    border-collapse: collapse;
+}
+
+th {
+    background: #9FC0E8;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #CCC;
+}
+
+tr:nth-child(even) {
+    background: #E3E3E3;
+}
+
+tr:nth-child(odd) {
+    background: #FFF;
+}
+
+a.action {
+    color: #405ACD;
+    text-decoration: none;
+    margin-right: 6px;
+}
+
+a.action:hover {
+    text-decoration: underline;
+}
+
+.error-messages {
+    margin: 10px 20px;
+    padding: 10px;
+    border: 1px solid #FF4444;
+    background: #FFEEEE;
+    border-radius: 3px;
+}
+
+.error {
+    color: #CC0000;
+    margin: 5px 0;
+}

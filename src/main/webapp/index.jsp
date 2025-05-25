@@ -23,6 +23,8 @@
         <button onclick="location.href='LoginPage.jsp'">Log in</button>
         <button onclick="location.href='RegisterPage.jsp'">Register</button>
         <button onclick="location.href='DevicesListView.jsp'">View Devices</button>
+        <button onclick="location.href='staff?action=list'">Staff</button>
+        <button onclick="location.href='supplier?action=list'">Supplier</button>
     </div>
 </div>
 
